@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from "react";
 import "./Login.css";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const formReducer = (state, event) => {
   if (event.reset) {
@@ -34,16 +34,21 @@ const Login = () => {
         },
         body: JSON.stringify(formData),
       });
-      const content = await rawResponse.json();
+
+      const response = await rawResponse.json();
+      if (response.username) {
+        console.log(response.username);
+      } else {
+        console.log(response.message);
+      }
+      setSubmit(false);
       setFormData({
         reset: true,
       });
-      console.log(content);
     })();
   };
 
   const handleChange = (event) => {
-    console.log("HELLO");
     setFormData({
       name: event.target.name,
       value: event.target.value,
