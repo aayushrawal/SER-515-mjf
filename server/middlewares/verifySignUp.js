@@ -8,7 +8,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 		username: req.body.username
 	}).exec((err, user) => {
 		if (err) {
-			res.status(500).send({ message: err });
+			res.status(500).send({ message: "backend Error Username" });
 			return;
 		}
 
@@ -22,7 +22,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 			email: req.body.email
 		}).exec((err, user) => {
 			if (err) {
-				res.status(500).send({ message: err });
+				res.status(500).send({ message: "backend Error email" });
 				return;
 			}
 
