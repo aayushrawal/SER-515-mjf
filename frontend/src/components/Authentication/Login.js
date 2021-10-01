@@ -5,9 +5,35 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div>
-      <h2>Login page</h2>
-      <Link to="/register">Link to Register page</Link>
+    <div className="container">
+      <form>
+        <div className="form-group">
+          <label for="email">Enter email</label>
+          <input
+            type="text"
+            className="form-control"
+            id="email"
+            placeholder="Enter email"
+          />
+        </div>
+
+        <div className="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            placeholder="Enter Password"
+          />
+        </div>
+        <br />
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+        <div>
+          <Link to="/register">Register now</Link>
+        </div>
+      </form>
     </div>
   );
 };

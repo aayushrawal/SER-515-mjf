@@ -10,6 +10,7 @@ import "./App.css";
 
 import Login from "./components/Authentication/Login";
 import Registration from "./components/Authentication/Registration";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Registration />
+          </Route>
+          <Route path="/home">
+            <Home />
           </Route>
           <Route exact path="/">
             <Redirect to="/login" />
