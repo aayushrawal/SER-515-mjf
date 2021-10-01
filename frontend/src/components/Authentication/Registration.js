@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 
 const Registration = (props) => {
-  const url = "/api/auth/signup"
+  const url = "api/auth/signup"
   const [data, setData] = useState({
     Firstname: "",
     Lastname: '',
@@ -37,11 +37,11 @@ const Registration = (props) => {
 
   return (
     <div className="container">
-      <form onSubmit={(e) => Signup(e)}>
+      <form onSubmit={Signup}>
         <div className="form-group">
           <label htmlFor="Firstname">First Name</label>
           <input
-            onChange={(e) =>handle(e)}
+            onChange={handle}
             type="text"
             className="form-control"
             id="Firstname"
@@ -51,7 +51,7 @@ const Registration = (props) => {
         </div>
         <div className="form-group">
           <label htmlFor="Lastname">Last Name</label>
-          <input onChange={(e) => handle(e)}
+          <input onChange={handle}
             type="text"
             className="form-control"
             id="Lastname"
@@ -61,7 +61,7 @@ const Registration = (props) => {
         </div>
         <div className="form-group">
           <label htmlFor="UserID">User ID</label>
-          <input onChange={(e) => handle(e)}
+          <input onChange={handle}
             type="text"
             className="form-control"
             id="UserID"
@@ -80,7 +80,7 @@ const Registration = (props) => {
 
         <div className="form-group">
           <label htmlFor="Email">Email address</label>
-          <input onChange={(e) => handle(e)}
+          <input onChange={handle}
             type="email"
             className="form-control"
             id="Email"
@@ -90,7 +90,7 @@ const Registration = (props) => {
         </div>
         <div className="form-group">
           <label htmlFor="Password">Password</label>
-          <input onChange={(e) => handle(e)}
+          <input onChange={handle}
             type="password"
             className="form-control"
             id="Password"
