@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 const Registration = (props) => {
   const url = "/api/auth/signup"
   const [data, setData] = useState({
-    Firstname: "",
-    Lastname: '',
-    Role: "",
-    Email: "",
-    Password: ""
+    firstName: "",
+    lastName: '',
+    roles: "",
+    username: "",
+    email: "",
+    password: ""
   })
   
   const handle=(e)=>{
@@ -39,12 +40,12 @@ const Registration = (props) => {
     //   console.log(content);
     // })();
     axios.post(url, {
-      Firstname: data.Firstname,
-      Lastname: data.Lastname,
-      UserID: data.UserID,
-      Role: data.Role,
-      Email: data.Email,
-      Password: data.Password,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      username: data.username,
+      roles: [data.roles],
+      email: data.email,
+      password: data.password,
     },
     {
       headers: {
@@ -61,62 +62,62 @@ const Registration = (props) => {
     <div className="container">
       <form onSubmit={Signup}>
         <div className="form-group">
-          <label htmlFor="Firstname">First Name</label>
+          <label htmlFor="firstName">First Name</label>
           <input
             onChange={handle}
             type="text"
             className="form-control"
-            id="Firstname"
-            value={data.Firstname}
+            id="firstName"
+            value={data.firstName}
             placeholder="Enter First Name"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="Lastname">Last Name</label>
+          <label htmlFor="lastName">Last Name</label>
           <input onChange={handle}
             type="text"
             className="form-control"
-            id="Lastname"
-            value={data.Lastname}
+            id="lastName"
+            value={data.lastName}
             placeholder="Enter Last Name"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="UserID">User ID</label>
+          <label htmlFor="username">User Name</label>
           <input onChange={handle}
             type="text"
             className="form-control"
-            id="UserID"
-            value={data.UserID}
+            id="username"
+            value={data.username}
             placeholder="Enter User ID"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="Role">Register As</label>
-          <select className="form-control" id="Role" value={data.Role} onChange={handle}>
+          <label htmlFor="roles">Register As</label>
+          <select className="form-control" id="roles" value={data.roles} onChange={handle}>
             <option>Select One</option>
-            <option>Coach</option>
-            <option>Player</option>
+            <option>coach</option>
+            <option>player</option>
           </select>
         </div>
 
         <div className="form-group">
-          <label htmlFor="Email">Email address</label>
+          <label htmlFor="email">Email address</label>
           <input onChange={handle}
             type="email"
             className="form-control"
-            id="Email"
-            value={data.Email}
+            id="email"
+            value={data.email}
             placeholder="Enter email"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="Password">Password</label>
+          <label htmlFor="password">Password</label>
           <input onChange={handle}
             type="password"
             className="form-control"
-            id="Password"
-            value={data.Password}
+            id="password"
+            value={data.password}
             placeholder="Enter Password"
           />
         </div>
