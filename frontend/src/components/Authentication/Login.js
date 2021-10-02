@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from "react";
 import "./Login.css";
 
-import { Link, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const formReducer = (state, event) => {
   if (event.reset) {
@@ -17,35 +17,33 @@ const formReducer = (state, event) => {
   };
 };
 
-const Login = () => {
+const Login = (props) => {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submit, setSubmit] = useState(false);
+  let history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmit(true);
+    const rawResponse = await fetch("/api/auth/signin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-    (async () => {
-      const rawResponse = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const response = await rawResponse.json();
-      if (response.username) {
-        console.log(response.username);
-      } else {
-        console.log(response.message);
-      }
-      setSubmit(false);
-      setFormData({
-        reset: true,
-      });
-    })();
+    const data = await rawResponse.json();
+    if (data.isUser) {
+      history.push("/home");
+    } else {
+      console.log(data.message);
+    }
+    setSubmit(false);
+    setFormData({
+      reset: true,
+    });
   };
 
   const handleChange = (event) => {
