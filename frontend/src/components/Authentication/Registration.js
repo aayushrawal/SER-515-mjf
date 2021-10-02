@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
-
+import { encode as btoa } from "base-64";
 import { Link } from "react-router-dom";
 
-const Registration = (props) => {
+const Registration = () => {
   const [data, setData] = useState({
     username: "",
     firstName: "",
@@ -26,13 +25,11 @@ const Registration = (props) => {
         method: "POST",
         headers: {
           Accept: "application/json",
+          Authorization: "Basic " + btoa("secret:tournament-secret-key"),
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-      if (rawResponse.ok) {
-        console.log("HELLO");
-      }
       const content = await rawResponse.json();
 
       setData({
@@ -68,12 +65,12 @@ const Registration = (props) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="username"></label>
+          <label htmlFor="username">Enter username</label>
           <input
             onChange={handle}
             type="text"
             className="form-control"
-            id="userId"
+            id="username"
             value={data.username}
             placeholder="Enter username"
           />
