@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 
 const Registration = (props) => {
-  const url = "api/auth/signup"
+  const url = "/api/auth/signup"
   const [data, setData] = useState({
     Firstname: "",
     Lastname: '',
@@ -20,15 +20,37 @@ const Registration = (props) => {
       console.log(newdata)
   }
 
+  
   const Signup = (e)=>{
     e.preventDefault();
+    // (async () => {
+    //   const rawResponse = await fetch("/api/auth/signup", {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+    //   const content = await rawResponse.json();
+    //   setData({
+    //     reset: true,
+    //   });
+    //   console.log(content);
+    // })();
     axios.post(url, {
       Firstname: data.Firstname,
       Lastname: data.Lastname,
       UserID: data.UserID,
       Role: data.Role,
       Email: data.Email,
-      Password: data.Password
+      Password: data.Password,
+    },
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
     })
     .then(res => {
       console.log(res.data)
@@ -71,7 +93,7 @@ const Registration = (props) => {
         </div>
         <div className="form-group">
           <label htmlFor="Role">Register As</label>
-          <select className="form-control" id="Role" value={data.Role} onChange={(e) => handle(e)}>
+          <select className="form-control" id="Role" value={data.Role} onChange={handle}>
             <option>Select One</option>
             <option>Coach</option>
             <option>Player</option>
