@@ -74,7 +74,7 @@ const NavigationHeader = () => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
+                  <NavLink to="/faq" tag={Link}>
                     FAQs
                   </NavLink>
                 </NavItem>
@@ -84,7 +84,7 @@ const NavigationHeader = () => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
+                  <NavLink to="/rules" tag={Link}>
                     Rules
                   </NavLink>
                 </NavItem>

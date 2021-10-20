@@ -4,8 +4,10 @@ import AboutUs from "./components/AboutUs";
 
 import Login from "./components/Authentication/Login";
 import Registration from "./components/Authentication/Registration";
+import FAQ from "./components/FAQ";
 import Landing from "./components/Landing";
 import NavigationHeader from "./components/Navbars/NavigationHeader";
+import Rules from "./components/Rules";
 
 function App() {
   return (
@@ -24,6 +26,16 @@ function App() {
             path="/about-us"
             exact
             render={(props) => <AboutUs {...props} />}
+          />
+          <Route
+            path="/faq"
+            exact
+            render={(props) => <FAQ {...props} />}
+          />
+          <Route
+            path="/rules"
+            exact
+            render={(props) => <Rules {...props} />}
           />
         </Switch>
       </BrowserRouter>
