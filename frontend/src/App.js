@@ -9,6 +9,7 @@ import Landing from './components/Landing';
 import NavigationHeader from './components/Navbars/NavigationHeader';
 import Rules from './components/Rules';
 import Sponsors from './components/Sponsors';
+import Referee from './components/Referee';
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 					<Route path="/faq" exact render={(props) => <FAQ {...props} />} />
 					<Route path="/rules" exact render={(props) => <Rules {...props} />} />
 					<Route path="/sponsors" exact render={(props) => <Sponsors {...props} />} />
+					<Route path="/referee-registration" exact render={(props) => <Referee {...props} />} />
 				</Switch>
 			</BrowserRouter>
 		</div>
