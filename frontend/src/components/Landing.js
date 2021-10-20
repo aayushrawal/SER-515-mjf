@@ -1,8 +1,17 @@
 import React from "react";
 import "./Landing.scss";
 
+import NavigationHeader from "./Navbars/NavigationHeader.js";
+
+import Home from "./Home";
+
 const Landing = () => {
-  return <div>This is the landing page.</div>;
+  return (
+    <>
+      <NavigationHeader />
+      <Home />
+    </>
+  );
 };
 
 export default Landing;

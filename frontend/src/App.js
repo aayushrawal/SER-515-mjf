@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Login from "./components/Authentication/Login";
 import Registration from "./components/Authentication/Registration";
-import Home from "./components/Home";
+import Landing from "./components/Landing";
 
 function App() {
   return (
@@ -16,10 +16,7 @@ function App() {
             exact
             render={(props) => <Registration {...props} />}
           />
-          <Route path="/home" exact render={(props) => <Home {...props} />} />
-          <Route exact path="/">
-            <Redirect to="/login" />
-          </Route>
+          <Route path="/" exact render={(props) => <Landing {...props} />} />
         </Switch>
       </BrowserRouter>
     </div>
