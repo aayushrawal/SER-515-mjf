@@ -85,7 +85,6 @@ const Registration = (props) => {
                       <Button
                         className="mt-4 btn btn-primary"
                         color="default"
-                        href="#pablo"
                       >
                         <span className="btn-inner--text">Login</span>
                       </Button>
