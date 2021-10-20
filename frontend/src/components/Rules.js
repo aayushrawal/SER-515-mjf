@@ -3,12 +3,12 @@ import './Rules.scss';
 
 function Rules() {
 	return (
-		<div class="Rules">
-			<div class="Rules-Header">
-				<h1 class="Text">Rules</h1>
+		<div className="Rules">
+			<div className="Rules-Header">
+				<h1 className="Text">Rules</h1>
 			</div>
-			<div class="Rules-Body">
-				<div class="ArticleStory">
+			<div className="Rules-Body">
+				<div className="ArticleStory">
 					<p>
 						Soccer’s rules and regulations are maintained and updated annually by the International Football
 						Association Board (IFAB). The board consists of eight members, four of which come from FIFA, and
