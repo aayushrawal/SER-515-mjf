@@ -89,12 +89,12 @@ const NavigationHeader = () => {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
+                  <NavLink to="/referee-registration" tag={Link}>
                     Referees
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
+                  <NavLink to="/sponsors" tag={Link}>
                     Sponsors
                   </NavLink>
                 </NavItem>
