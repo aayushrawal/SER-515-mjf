@@ -64,7 +64,7 @@ const NavigationHeader = () => {
               </div>
               <Nav className="navbar-nav-hover align-items-lg-center" navbar>
                 <NavItem>
-                  <NavLink href="#pablo" onClick={(e) => e.preventDefault()}>
+                  <NavLink to="/about-us" tag={Link}>
                     About
                   </NavLink>
                 </NavItem>
