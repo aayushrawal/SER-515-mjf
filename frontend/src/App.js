@@ -8,6 +8,7 @@ import Landing from "./components/Landing";
 function App() {
   return (
     <div>
+      <NavigationHeader />
       <BrowserRouter>
         <Switch>
           <Route path="/login" exact render={(props) => <Login {...props} />} />

@@ -8,7 +8,6 @@ import Home from "./Home";
 const Landing = () => {
   return (
     <>
-      <NavigationHeader />
       <Home />
     </>
   );
