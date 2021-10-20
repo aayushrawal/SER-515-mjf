@@ -39,21 +39,7 @@ const Registration = (props) => {
 
   const Signup = (e) => {
     e.preventDefault();
-    // (async () => {
-    //   const rawResponse = await fetch("/api/auth/signup", {
-    //     method: "POST",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-    //   const content = await rawResponse.json();
-    //   setData({
-    //     reset: true,
-    //   });
-    //   console.log(content);
-    // })();
+
     axios.post(url, {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -95,21 +81,22 @@ const Registration = (props) => {
                     <small>Already have an account?</small>
                   </div>
                   <div className="text-center">
-                    <Button
-                      className="mt-4 btn btn-primary"
-                      color="default"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <span className="btn-inner--text">Login</span>
-                    </Button>
+                    <Link to="/login">
+                      <Button
+                        className="mt-4 btn btn-primary"
+                        color="default"
+                        href="#pablo"
+                      >
+                        <span className="btn-inner--text">Login</span>
+                      </Button>
+                    </Link>
                   </div>
                 </CardHeader>
                 <CardBody className="px-lg-5 py-lg-5">
                   <div className="text-center text-muted mb-4">
                     <small>Or sign up with credentials</small>
                   </div>
-                  <Form role="form">
+                  <Form role="form" onSubmit={Signup}>
                     <FormGroup>
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
@@ -117,7 +104,9 @@ const Registration = (props) => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="FirstName" type="text" id="firstName" />
+                        <Input placeholder="FirstName" type="text" id="firstName"
+                          input onChange={handle}
+                          value={data.firstName} />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -127,7 +116,9 @@ const Registration = (props) => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="LasttName" type="text" id="lastName" />
+                        <Input placeholder="LasttName" type="text" id="lastName"
+                          value={data.lastName}
+                          input onChange={handle} />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -137,7 +128,9 @@ const Registration = (props) => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Enter User ID" type="text" id="username" />
+                        <Input placeholder="Enter User ID" type="text" id="username"
+                          value={data.username}
+                          input onChange={handle} />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup >
@@ -147,7 +140,8 @@ const Registration = (props) => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="select" id="roles" >
+                        <Input type="select" id="roles"
+                          value={data.roles} onChange={handle} >
                           <option value="" disabled selected>Register As</option>
                           <option value="coach">Coach</option>
                           <option value="player">Player</option>
@@ -161,7 +155,9 @@ const Registration = (props) => {
                             <i className="ni ni-email-83" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Email" type="email" />
+                        <Input placeholder="Email" type="email"
+                          value={data.email}
+                          input onChange={handle} />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -172,25 +168,21 @@ const Registration = (props) => {
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
+                          id="password"
+                          value={data.password}
+                          input onChange={handle}
                           placeholder="Password"
                           type="password"
                           autoComplete="off"
                         />
                       </InputGroup>
                     </FormGroup>
-                    {/* <div className="text-muted font-italic">
-                      <small>
-                        password strength:{" "}
-                        <span className="text-success font-weight-700">
-                          strong
-                        </span>
-                      </small>
-                    </div> */}
+
                     <div className="text-center">
                       <Button
                         className="mt-4"
                         color="primary"
-                        type="button"
+                        type="submit"
                       >
                         Create account
                       </Button>
@@ -201,77 +193,6 @@ const Registration = (props) => {
             </Col>
           </Row>
         </Container>
-        {/* <div className="container">
-          <form onSubmit={Signup}>
-            <div className="form-group">
-              <label htmlFor="firstName">First Name</label>
-              <input
-                onChange={handle}
-                type="text"
-                className="form-control"
-                id="firstName"
-                value={data.firstName}
-                placeholder="Enter First Name"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Last Name</label>
-              <input onChange={handle}
-                type="text"
-                className="form-control"
-                id="lastName"
-                value={data.lastName}
-                placeholder="Enter Last Name"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="username">User Name</label>
-              <input onChange={handle}
-                type="text"
-                className="form-control"
-                id="username"
-                value={data.username}
-                placeholder="Enter User ID"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="roles">Register As</label>
-              <select className="form-control" id="roles" value={data.roles} onChange={handle}>
-                <option>Select One</option>
-                <option>coach</option>
-                <option>player</option>
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email address</label>
-              <input onChange={handle}
-                type="email"
-                className="form-control"
-                id="email"
-                value={data.email}
-                placeholder="Enter email"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input onChange={handle}
-                type="password"
-                className="form-control"
-                id="password"
-                value={data.password}
-                placeholder="Enter Password"
-              />
-            </div>
-            <br />
-            <button type="submit" className="btn btn-primary" >
-              Submit
-            </button>
-            <div>
-              <Link to="/login">Back to login</Link>
-            </div>
-          </form>
-        </div> */}
         );
       </div>
     </div>
