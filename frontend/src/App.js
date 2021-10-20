@@ -1,37 +1,32 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
-
-import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import AboutUs from "./components/AboutUs";
 
 import Login from "./components/Authentication/Login";
 import Registration from "./components/Authentication/Registration";
-import Home from "./components/Home";
-import FAQ from "./components/FAQ";
+import Landing from "./components/Landing";
+import NavigationHeader from "./components/Navbars/NavigationHeader";
 
 function App() {
   return (
     <div>
-      <Router>
+      <BrowserRouter>
+        <NavigationHeader />
         <Switch>
-          <Route path="/login">
-            <FAQ />
-          </Route>
-          <Route path="/register">
-            <Registration />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/login" />
-          </Route>
+          <Route path="/login" exact render={(props) => <Login {...props} />} />
+          <Route
+            path="/register"
+            exact
+            render={(props) => <Registration {...props} />}
+          />
+          <Route path="/" exact render={(props) => <Landing {...props} />} />
+          <Route
+            path="/about-us"
+            exact
+            render={(props) => <AboutUs {...props} />}
+          />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }
