@@ -3,15 +3,16 @@ import "./AboutUs.scss";
 import Dhruv from '../assets/img/profile/dhruv.jpeg'
 import Sameet from '../assets/img/profile/Sameet.jpeg'
 import Saurabh from '../assets/img/profile/Saurabh.jpeg'
-import Punith from '../assets/img/profile/puneeth.jpeg'
+import Punith from '../assets/img/profile/puneeth.jpg'
+import Aayush from '../assets/img/profile/Aayush.jpeg'
 import {
   Badge, Button, Card, CardBody, Container, Row, Col, CardImg
 } from "reactstrap";
 
 const AboutUs = () => {
   return (
-    <section className="section section-lg section-shaped pb-250">
-      <div className="shape shape-style-1 shape-default">
+    <section className="section section-shaped section-lg">
+      <div className="shape shape-style-1 bg-gradient-default">
         <span />
         <span />
         <span />
@@ -45,6 +46,8 @@ const AboutUs = () => {
       </Container>
       <Container className="py-lg-md d-flex">
         <Container>
+        <br/>
+				<br/>
           <Row className="justify-content-center">
             <Col lg="12">
               <Row className="row-grid">
@@ -174,7 +177,7 @@ const AboutUs = () => {
                 <Col lg="2" />
                 <Col lg="4">
                   <Card className="card-lift--hover shadow border-0">
-                    <CardImg className="img-fluid" src={Dhruv} alt="placeholder" width="100%" />
+                    <CardImg className="img-fluid" src={Aayush} alt="placeholder" width="100%" />
                     <CardBody className="py-5">
                       <h6 className="text-primary text-uppercase">
                         Aayush Rawal
