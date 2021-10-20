@@ -11,6 +11,7 @@ import "./App.css";
 import Login from "./components/Authentication/Login";
 import Registration from "./components/Authentication/Registration";
 import Home from "./components/Home";
+import FAQ from "./components/FAQ";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/login">
-            <Login />
+            <FAQ />
           </Route>
           <Route path="/register">
             <Registration />
