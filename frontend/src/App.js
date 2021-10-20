@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import AboutUs from "./components/AboutUs";
 
 import Login from "./components/Authentication/Login";
 import Registration from "./components/Authentication/Registration";
@@ -17,6 +18,7 @@ function App() {
             render={(props) => <Registration {...props} />}
           />
           <Route path="/" exact render={(props) => <Landing {...props} />} />
+          <Route path="/about-us" exact render={(props) => <AboutUs {...props} />} />
         </Switch>
       </BrowserRouter>
     </div>
