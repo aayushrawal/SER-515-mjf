@@ -30,8 +30,31 @@ const AboutUs = () => {
               <h1 className="display-3 text-white">
                 About Us
               </h1>
-              <p className="lead text-white">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta id esse delectus illum cupiditate! Iure, eveniet? Fugit accusamus neque harum labore nihil provident rem non deleniti! Alias rerum aut facilis!
+              <p className="description mt-3 text-white" style={{fontSize:"20px"}}>
+              Bring your team or your entire Club and enjoy the best 2 day tournament in the Region. We will have multiple flights (as needed) for the Fall Classic with a 3 game minimum for each team.
+              We will have a large number of teams that play Short-Sided games in this tournament.
+              <big/>
+             <br/><br/>
+              WHEN: October 15-18, 2022 Where: Tempe AZ
+              <br/><br/>
+              FEES: u8-u9-u10 (7v7) $525; u10-u11-u12 (8v8) $575; u12-u13-u14-u15 (11v11) $625
+              <br/><br/>
+              APPLICATION DEADLINE: September 10, 2021. All applications received by the deadline will be evaluated equally in the selection process. Applications received after the deadline will automatically be placed on a waiting list. Any questions may be directed to carol@Sparky'sclassic.com
+              <br/><br/>
+              HOTELS: The Sparky's Tournament is a stay to play tournament. A team MUST stay in a listed hotel to be accepted and participate in the tournament. The Sparky's Housing Bureau (SiteSearch) has blocked rooms at the hotels listed at the best possible rates. Please click on the Find A Hotel link in the left hand column to secure your hotel rooms.
+              <br/><br/>
+              Make Payment to: Sparky's Soccer Club; ATTN: 1275 East University Drive, Unit 409
+              <br/><br/>
+              The process includes the
+              <br/>
+              1) Completion of the application form
+              <br/>
+              2) CLICK APPLY at the top of Front Page!
+              <br/>
+              3) After you submit the form you will receive an APPLICATION CERTIFICATE with the data that you provided (a duplicate certificate is also sent to the primary email you provided on your application). Payments may be made online via Credit Card.
+              <br/>             
+              4) Return the APPLICATION CERTIFICATE via a credit card Online during your registration or send a check made out to Sparky's Soccer Classic to the address listed on the Certificate.
+              <br/>
               </p>
             </Col>
           </Row>
@@ -59,15 +82,9 @@ const AboutUs = () => {
                         Dhruv Patel
                       </h6>
                       <p className="description mt-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam perferendis laboriosam, eligendi exercitationem vero earum nemo, inventore repellendus necessitatibus maxime sapiente dignissimos nihil veritatis voluptatem ad. Quibusdam non accusamus ipsa.
+                      I put funny captions on instagram.
                       </p>
                       <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
                         <Badge color="primary" pill className="mr-1">
                           Student
                         </Badge>
@@ -84,7 +101,6 @@ const AboutUs = () => {
                         <span className="btn-inner--text">
                           Linkedin
                         </span>
-
                       </Button>
                     </CardBody>
                   </Card>
@@ -97,15 +113,9 @@ const AboutUs = () => {
                         Sameet Krishna
                       </h6>
                       <p className="description mt-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam perferendis laboriosam, eligendi exercitationem vero earum nemo, inventore repellendus necessitatibus maxime sapiente dignissimos nihil veritatis voluptatem ad. Quibusdam non accusamus ipsa.
+                      Software Developer in my spare time. Love to travel and eat food. One thing I say wherever i go: "Hello World!".
                       </p>
                       <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
                         <Badge color="primary" pill className="mr-1">
                           Student
                         </Badge>
@@ -135,15 +145,8 @@ const AboutUs = () => {
                         Saurabh Rane
                       </h6>
                       <p className="description mt-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam perferendis laboriosam, eligendi exercitationem vero earum nemo, inventore repellendus necessitatibus maxime sapiente dignissimos nihil veritatis voluptatem ad. Quibusdam non accusamus ipsa.
-                      </p>
+                       Chicken khaana hai kya tereko?</p>
                       <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
                         <Badge color="primary" pill className="mr-1">
                           Student
                         </Badge>
@@ -183,18 +186,11 @@ const AboutUs = () => {
                         Aayush Rawal
                       </h6>
                       <p className="description mt-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam perferendis laboriosam, eligendi exercitationem vero earum nemo, inventore repellendus necessitatibus maxime sapiente dignissimos nihil veritatis voluptatem ad. Quibusdam non accusamus ipsa.
-                      </p>
+                      On a recon mission for MI6. 007 who?</p>
                       <div>
                         <Badge color="primary" pill className="mr-1">
                           Student
-                        </Badge>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
+                        </Badge>                      
                       </div>
                       <Button
                         className="mt-4"
@@ -218,21 +214,15 @@ const AboutUs = () => {
                     <CardImg className="img-fluid" src={Punith} alt="placeholder" width="100%" />
                     <CardBody className="py-5">
                       <h6 className="text-primary text-uppercase">
-                        Punith Vadi
+                        Punith Vaddi
                       </h6>
                       <p className="description mt-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam perferendis laboriosam, eligendi exercitationem vero earum nemo, inventore repellendus necessitatibus maxime sapiente dignissimos nihil veritatis voluptatem ad. Quibusdam non accusamus ipsa.
+                      Avid runner. This team is me and I am this team.
                       </p>
                       <div>
                         <Badge color="primary" pill className="mr-1">
                           Student
-                        </Badge>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
-                        <Badge color="primary" pill className="mr-1">
-                          Student
-                        </Badge>
+                        </Badge>                        
                       </div>
                       <Button
                         className="mt-4"
