@@ -121,7 +121,7 @@ const Hotels = (props) => {
                     </div>
                 </div>
             </div>
-       // </div>
+        </div>
     );
 };
 

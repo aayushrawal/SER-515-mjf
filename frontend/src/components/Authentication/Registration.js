@@ -33,6 +33,7 @@ const Registration = (props) => {
     email: "",
     teamName: "",
     cptName: "",
+    playerName:"",
     players: []
   });
 
@@ -181,6 +182,19 @@ const Registration = (props) => {
                           input onChange={handle} />
                       </InputGroup>
                     </FormGroup>
+                    <FormGroup>
+                      <InputGroup className="input-group-alternative mb-3">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="fa fa-user" />
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input placeholder="Player Name" type="text" id="playerName"
+                          value={data.playerName}
+                          input onChange={handle} />
+                      </InputGroup>
+                    </FormGroup>
+                    
                     {playerFields.map((player, idx) => (
                       <div key={idx}>
                         <FormGroup>
@@ -192,7 +206,7 @@ const Registration = (props) => {
                                     <i className="fa fa-user" />
                                   </InputGroupText>
                                 </InputGroupAddon>
-                                <Input placeholder="Player Name" type="text" id="playerName"
+                                <Input placeholder="Add Players" type="text" id="playerName"
                                   value={player.playerName || ""}
                                   input onChange={e => handlePlayerData(idx, e)} />
                               </InputGroup>
