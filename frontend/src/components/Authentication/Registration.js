@@ -31,6 +31,7 @@ const Registration = (props) => {
     roles: "",
     phoneNumber: "",
     email: "",
+    teamName: "",
     cptName: "",
     players: []
   });
@@ -104,14 +105,14 @@ const Registration = (props) => {
               <Card className="bg-secondary shadow border-0">
                 <CardBody className="px-lg-5 py-lg-5">
                   <div className="text-center text-muted mb-4">
-                    <small>Sign up with credentials</small>
+                    <small>Register Team</small>
                   </div>
                   <Form role="form" onSubmit={Signup}>
                     <FormGroup>
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                            <i className="ni ni-hat-3" />
+                          <i class="fa fa-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input placeholder="Coach FirstName" type="text" id="firstName"
@@ -123,7 +124,7 @@ const Registration = (props) => {
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                            <i className="ni ni-hat-3" />
+                          <i class="fa fa-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input placeholder="Coach LastName" type="text" id="lastName"
@@ -135,7 +136,7 @@ const Registration = (props) => {
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                            <i className="ni ni-hat-3" />
+                          <i class="fa fa-phone"></i>
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input placeholder="Phone number" type="text" id="phoneNumber"
@@ -144,23 +145,35 @@ const Registration = (props) => {
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
-                        <InputGroup className="input-group-alternative mb-3">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input placeholder="Email" type="email" id="email"
+                      <InputGroup className="input-group-alternative mb-3">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="ni ni-email-83" />
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input placeholder="Email" type="email" id="email"
                           value={data.email}
                           input onChange={handle}
-                          />
-                        </InputGroup>
-                      </FormGroup>
+                        />
+                      </InputGroup>
+                    </FormGroup>
                     <FormGroup>
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                            <i className="ni ni-hat-3" />
+                          <i class="fa fa-users"></i>
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input placeholder="Team Name" type="text" id="teamName"
+                          value={data.teamName}
+                          input onChange={handle} />
+                      </InputGroup>
+                    </FormGroup>
+                    <FormGroup>
+                      <InputGroup className="input-group-alternative mb-3">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="fa fa-user" />
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input placeholder="Captain Name" type="text" id="cptName"
@@ -176,15 +189,15 @@ const Registration = (props) => {
                               <InputGroup className="input-group-alternative mb-3">
                                 <InputGroupAddon addonType="prepend">
                                   <InputGroupText>
-                                    <i className="ni ni-hat-3" />
+                                    <i className="fa fa-user" />
                                   </InputGroupText>
                                 </InputGroupAddon>
-                                <Input placeholder="Player FirstName" type="text" id="playerFName"
+                                <Input placeholder="Player Name" type="text" id="playerName"
                                   value={player.playerName || ""}
                                   input onChange={e => handlePlayerData(idx, e)} />
                               </InputGroup>
                             </Col>
-                            <Col md="2">
+                            <Col md="2" className="d-flex">
                               <span className="btn-icon">
                                 <i class="fa fa-minus-circle fa-lg" onClick={playerRemove}></i>
                               </span>
