@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios'
+import "./Registration.scss";
 import {
   Button,
   Card,
@@ -20,43 +21,68 @@ import { Link } from "react-router-dom";
 
 const Registration = (props) => {
   const url = "/api/auth/signup"
+  const [playerFields, setPlayerFields] = useState([{
+    playerName: null
+  }]);
+
   const [data, setData] = useState({
     firstName: "",
     lastName: '',
     roles: "",
-    username: "",
+    phoneNumber: "",
     email: "",
-    password: ""
-  })
+    cptName: "",
+    players: []
+  });
+
+
+  const playerAdd = () => {
+    const players = [...playerFields];
+    players.push({ playerName: null });
+    setPlayerFields(players);
+  }
+
+  const playerRemove = (i) => {
+    const players = [...playerFields];
+    players.splice(i, 1);
+    setPlayerFields(players);
+  }
 
   const handle = (e) => {
     const newdata = { ...data }
     newdata[e.target.id] = e.target.value
     setData(newdata)
-    console.log(newdata)
   }
 
+  function handlePlayerData(i, event) {
+    const players = [...playerFields];
+    players[i].playerName = event.target.value;
+    setPlayerFields(players);
+  }
 
   const Signup = (e) => {
     e.preventDefault();
+    let newData = { ...data, players: [...playerFields] };
+    setData(newData);
+    console.log(newData);
 
-    axios.post(url, {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      username: data.username,
-      roles: [data.roles],
-      email: data.email,
-      password: data.password,
-    },
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      })
-      .then(res => {
-        console.log(res.data)
-      })
+    // axios.post(url, {
+    //   firstName: data.firstName,
+    //   lastName: data.lastName,
+    //   phoneNumber: data.phoneNumber,
+    //   roles: [data.roles],
+    //   email: data.email,
+    //   password: data.password,
+    // },
+    //   {
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then(res => {
+    //     console.log(res.data)
+    //   })
   }
 
   return (
@@ -76,24 +102,9 @@ const Registration = (props) => {
           <Row className="justify-content-center">
             <Col lg="5">
               <Card className="bg-secondary shadow border-0">
-                <CardHeader className="bg-white pb-5">
-                  <div className="text-muted text-center mb-3">
-                    <small>Already have an account?</small>
-                  </div>
-                  <div className="text-center">
-                    <Link to="/login">
-                      <Button
-                        className="mt-4 btn btn-primary"
-                        color="default"
-                      >
-                        <span className="btn-inner--text">Login</span>
-                      </Button>
-                    </Link>
-                  </div>
-                </CardHeader>
                 <CardBody className="px-lg-5 py-lg-5">
                   <div className="text-center text-muted mb-4">
-                    <small>Or sign up with credentials</small>
+                    <small>Sign up with credentials</small>
                   </div>
                   <Form role="form" onSubmit={Signup}>
                     <FormGroup>
@@ -103,7 +114,7 @@ const Registration = (props) => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="FirstName" type="text" id="firstName"
+                        <Input placeholder="Coach FirstName" type="text" id="firstName"
                           input onChange={handle}
                           value={data.firstName} />
                       </InputGroup>
@@ -115,7 +126,7 @@ const Registration = (props) => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="LasttName" type="text" id="lastName"
+                        <Input placeholder="Coach LastName" type="text" id="lastName"
                           value={data.lastName}
                           input onChange={handle} />
                       </InputGroup>
@@ -127,63 +138,71 @@ const Registration = (props) => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Enter User ID" type="text" id="username"
-                          value={data.username}
+                        <Input placeholder="Phone number" type="text" id="phoneNumber"
+                          value={data.phoneNumber}
                           input onChange={handle} />
                       </InputGroup>
                     </FormGroup>
-                    <FormGroup >
+                    <FormGroup>
+                        <InputGroup className="input-group-alternative mb-3">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="ni ni-email-83" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input placeholder="Email" type="email" id="email"
+                          value={data.email}
+                          input onChange={handle}
+                          />
+                        </InputGroup>
+                      </FormGroup>
+                    <FormGroup>
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="select" id="roles"
-                          value={data.roles} onChange={handle} >
-                          <option value="" disabled selected>Register As</option>
-                          <option value="coach">Coach</option>
-                          <option value="player">Player</option>
-                        </Input>
-                      </InputGroup>
-                    </FormGroup>
-                    <FormGroup>
-                      <InputGroup className="input-group-alternative mb-3">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="ni ni-email-83" />
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input placeholder="Email" type="email"
-                          value={data.email}
+                        <Input placeholder="Captain Name" type="text" id="cptName"
+                          value={data.cptName}
                           input onChange={handle} />
                       </InputGroup>
                     </FormGroup>
-                    <FormGroup>
-                      <InputGroup className="input-group-alternative">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="ni ni-lock-circle-open" />
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input
-                          id="password"
-                          value={data.password}
-                          input onChange={handle}
-                          placeholder="Password"
-                          type="password"
-                          autoComplete="off"
-                        />
-                      </InputGroup>
-                    </FormGroup>
-
+                    {playerFields.map((player, idx) => (
+                      <div key={idx}>
+                        <FormGroup>
+                          <Row>
+                            <Col md="10">
+                              <InputGroup className="input-group-alternative mb-3">
+                                <InputGroupAddon addonType="prepend">
+                                  <InputGroupText>
+                                    <i className="ni ni-hat-3" />
+                                  </InputGroupText>
+                                </InputGroupAddon>
+                                <Input placeholder="Player FirstName" type="text" id="playerFName"
+                                  value={player.playerName || ""}
+                                  input onChange={e => handlePlayerData(idx, e)} />
+                              </InputGroup>
+                            </Col>
+                            <Col md="2">
+                              <span className="btn-icon">
+                                <i class="fa fa-minus-circle fa-lg" onClick={playerRemove}></i>
+                              </span>
+                              <span className="btn-icon">
+                                <i class="fa fa-plus fa-lg" onClick={playerAdd}></i>
+                              </span>
+                            </Col>
+                          </Row>
+                        </FormGroup>
+                      </div>
+                    ))}
                     <div className="text-center">
                       <Button
                         className="mt-4"
                         color="primary"
                         type="submit"
                       >
-                        Create account
+                        Create Team
                       </Button>
                     </div>
                   </Form>

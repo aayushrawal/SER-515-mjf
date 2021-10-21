@@ -8,3 +8,13 @@
     color: green;
     font-weight: bold;
 }
+
+.btn-icon {
+    position: relative;
+    top: 10px;
+    margin-right: 10px;
+}
+
+.btn-icon:hover {
+    cursor: pointer;
+}
