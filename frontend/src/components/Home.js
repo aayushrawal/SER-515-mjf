@@ -3,10 +3,12 @@ import "./Home.scss";
 
 import { Container, Row, Col, Button } from "reactstrap";
 
+import { Link } from "react-router-dom";
+
 const Home = () => {
   return (
-    <section className="section section-lg section-shaped pb-250">
-      <div className="shape shape-style-1 shape-default">
+    <section className="section section-lg section-shaped main-section">
+      <div className="shape shape-style-1 bg-gradient-default">
         <span />
         <span />
         <span />
@@ -17,22 +19,23 @@ const Home = () => {
         <span />
         <span />
       </div>
-      <Container className="py-lg-md d-flex">
-        <div className="col px-0">
-          <Row>
+      <Container className="py-lg-md main-content">
+        <div>
+          <Row className="justify-content-md-center">
             <Col lg="6">
-              <h1 className="display-3 text-white">
-                Welcome <span>Are you ready to play?</span>
+              <h1 className="text-white">
+                <span>Are you ready to play?</span>
               </h1>
               <p className="lead text-white">
                 The annual sparkys soccer tournament is back and is bigger than
                 last year! Are you going to be the next champion?
               </p>
-              <div className="btn-wrapper">
+              <div className="btn-wrapper btn-content">
                 <Button
                   className="btn-icon mb-3 mb-sm-0"
-                  color="info"
-                  href="https://demos.creative-tim.com/argon-design-system-react/#/documentation/alerts?ref=adsr-landing-page"
+                  color="danger"
+                  to="/register"
+                  tag={Link}
                 >
                   <span className="btn-inner--icon mr-1">
                     <i className="fa fa-arrow-right" />
