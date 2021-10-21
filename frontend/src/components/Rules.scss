@@ -3,26 +3,32 @@
     flex-direction: column;
 }
 
-.Rules-Header {
-    background-image: url(../assets/img/Rules.jpeg);
-    height: 300px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.Text {
+.Title {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: right;
-    color: wheat;
-    padding: 100px;
+    text-align: center;
+    color: white;
+    padding: 10px;
     font-size: 6rem;
     font-weight: bold;
     text-decoration: underline;
 }
 
 .Rules-Body {
-    padding: 80px;
+    padding: 10px;
     padding-left: 250px;
     padding-right: 250px;
+    color: white;
 }
+
+.Rules-Body font {
+    color: white;
+    font: bold;
+}
+
+.Body-Title {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 100px;
+}
+
