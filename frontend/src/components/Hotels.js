@@ -25,27 +25,39 @@ const SubmitForm = (e) => {
 
 const Hotels = (props) => {
     return (
+        <div useRef="main">
+      <div className="section section-shaped section-lg">
+        <div className="shape shape-style-1 bg-gradient-default">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
         <div className="hotel">
-            <div className="hotel-Header">
+            {/* <div className="hotel-Header">
                 <div className="hotel-Header-Content">
                     <h1 className="text">Hotels</h1>
                 </div>
-            </div>
+            </div> */}
 
             <div className="hotel-Body">
 
                 <div className="col-12">
 
-                    <p class="h2">
+                    <p class="h2" style={{color:"white"}}>
                         Book Hotels For your Team
                     </p>
-                    <p class="h4">
-                        !!!All the Teams have to book a Hotel from the listed properties only,
+                    <p class="h5" style={{color:"white"}}>
+                        All the Teams have to book a Hotel from the listed properties only,
                         any team booking outside will not be considered for the acceptance of the
                         tournament.
                     </p>
                     <div className="text-center">
-                        <a target="_blank" href="https://hotels.sitesearchllc.net/v6?currency=USD&type=geo&siteid=69747&longitude=-84.16356960000000&latitude=39.84197160000000&radius=100&checkin=10/15/2021&nights=2&message=message&locationlabel=Warrior+Soccer+Complex&cid=GROUP-EVENT-EMAIL&pageSize=10&useMiles">
+                        <a target="_blank" href="https://www.hotels.com/">
                             <Button onclick="('window.location.href)"
                                 className="mt-4"
                                 color="warning"
@@ -57,7 +69,7 @@ const Hotels = (props) => {
                     </div>
                     <br />
                     <br />
-                    <p class="h3">
+                    <p class="h5" style={{color:"white"}}>
                         Don't have time to book a hotel? No problem we can do that for you.
                         Just submit the form and relax and we will book a Hotel for You.
                     </p>
@@ -108,6 +120,8 @@ const Hotels = (props) => {
                 </div>
             </div>
         </div>
+        </div>
+       // </div>
     );
 };
 
