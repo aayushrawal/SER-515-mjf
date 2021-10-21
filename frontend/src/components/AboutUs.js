@@ -3,7 +3,7 @@ import "./AboutUs.scss";
 import Dhruv from '../assets/img/profile/dhruv.jpeg'
 import Sameet from '../assets/img/profile/Sameet.jpeg'
 import Saurabh from '../assets/img/profile/Saurabh.jpeg'
-import Punith from '../assets/img/profile/puneeth.jpg'
+import Punith from '../assets/img/profile/puneeth.jpeg'
 import Aayush from '../assets/img/profile/Aayush.jpeg'
 import {
   Badge, Button, Card, CardBody, Container, Row, Col, CardImg
