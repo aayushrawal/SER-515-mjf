@@ -1,6 +1,16 @@
 import React from 'react';
 import './Fixtures.scss';
 import Table from 'react-bootstrap/Table';
+import {
+	Badge,
+	Button,
+	Card,
+	CardBody,
+	Container,
+	Row,
+	Col,
+	CardImg
+} from 'reactstrap';
 
 function Fixtures() {
 	return (
@@ -19,39 +29,48 @@ function Fixtures() {
 				<div className="Fixtures">
 					<div className="Fixtures-Body">
 						<div className="ArticleStory">
-							<div className="temp">Fixtures</div>
-							<div class="box">
-								<Table striped bordered hover>
-									<thead>
-										<tr>
-											<th>Home Team</th>
-											<th>Away Team</th>
-											<th>Time</th>
-											<th>Venue</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>A</td>
-											<td>B</td>
-											<td>7 pm EST</td>
-											<td>Tempe</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>B</td>
-											<td>7 pm EST</td>
-											<td>Tempe</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>B</td>
-											<td>7 pm EST</td>
-											<td>Tempe</td>
-										</tr>
-									</tbody>
-								</Table>
-							</div>
+							<Container className="py-lg-md d-flex">
+								<div className="col px-0">
+									<h1 className="display-3 text-white">
+										Fixtures
+									</h1>
+									<Table
+										striped
+										bordered
+										hover
+										size="lg"
+									>
+										<thead>
+											<tr>
+												<th>Home Team</th>
+												<th>Away Team</th>
+												<th>Time</th>
+												<th>Venue</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>A</td>
+												<td>B</td>
+												<td>7 pm EST</td>
+												<td>Tempe</td>
+											</tr>
+											<tr>
+												<td>A</td>
+												<td>B</td>
+												<td>7 pm EST</td>
+												<td>Tempe</td>
+											</tr>
+											<tr>
+												<td>A</td>
+												<td>B</td>
+												<td>7 pm EST</td>
+												<td>Tempe</td>
+											</tr>
+										</tbody>
+									</Table>
+								</div>
+							</Container>
 						</div>
 					</div>
 				</div>
