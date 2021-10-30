@@ -1,10 +1,11 @@
 {
-    "name": "sparky's soccer tournament",
-    "version": "1.0",
+    "name": "sparkys_soccer_tournament",
+    "version": "1.0.0",
     "description": "Backend for sparkys soccer tournament website",
     "main": "server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "devserver": "nodemon server.js"
     },
     "keywords": [
         "nodejs",
@@ -20,5 +21,8 @@
         "express": "^4.17.1",
         "mongoose": "^6.0.12",
         "package.json": "^2.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.14"
     }
 }
