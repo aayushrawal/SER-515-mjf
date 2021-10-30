@@ -20,7 +20,7 @@ function FAQ() {
 				<div className="FAQ">
 					<div className="FAQ-Body">
 						<div className="col-12">
-							<div className="Title">FAQs</div>
+							<div className="temp1">FAQs</div>
 							<p className="FAQ-Body-Title">
 								Below are answers to questions prospective members often have. You should also note the
 								other information on the website.

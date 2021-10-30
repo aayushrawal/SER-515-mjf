@@ -113,7 +113,7 @@ const AboutUs = () => {
                         Sameet Krishna
                       </h6>
                       <p className="description mt-3">
-                      Software Developer in my spare time. Love to travel and eat food. One thing I say wherever i go: "Hello World!".
+                      I think and therfore I'm not.
                       </p>
                       <div>
                         <Badge color="primary" pill className="mr-1">
@@ -217,7 +217,7 @@ const AboutUs = () => {
                         Punith Vaddi
                       </h6>
                       <p className="description mt-3">
-                      Avid runner. This team is me and I am this team.
+                      Avid runner. This team is me.
                       </p>
                       <div>
                         <Badge color="primary" pill className="mr-1">

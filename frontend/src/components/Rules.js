@@ -18,7 +18,7 @@ function Rules() {
 				<div className="Rules">
 					<div className="Rules-Body">
 						<div className="ArticleStory">
-							<div className="Title">Rules</div>
+							<div className="temp2">Rules</div>
 							<p className="Body-Title">
 								Soccer’s rules and regulations are maintained and updated annually by the International
 								Football Association Board (IFAB). The board consists of eight members, four of which
