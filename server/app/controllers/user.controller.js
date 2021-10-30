@@ -34,7 +34,7 @@ exports.create = (req, res) => {
     return;
   }
 
-  if (!req.body.teamPlayers.length < 1) {
+  if (!req.body.teamPlayers.length > 0) {
     res
       .status(400)
       .send({ message: "must have registered atleast one team player." });
