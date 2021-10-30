@@ -98,6 +98,11 @@ const NavigationHeader = () => {
                     Sponsors
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink to="/venue" tag={Link}>
+                    Venues
+                  </NavLink>
+                </NavItem>
               </Nav>
             </UncontrolledCollapse>
           </Container>
