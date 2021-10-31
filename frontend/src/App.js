@@ -11,6 +11,7 @@ import NavigationHeader from './components/Navbars/NavigationHeader';
 import Rules from './components/Rules';
 import Sponsors from './components/Sponsors';
 import Referee from './components/Referee';
+import PointTable from './components/PointTable';
 
 function App() {
 	return (
@@ -27,6 +28,7 @@ function App() {
 					<Route path="/rules" exact render={(props) => <Rules {...props} />} />
 					<Route path="/sponsors" exact render={(props) => <Sponsors {...props} />} />
 					<Route path="/referee-registration" exact render={(props) => <Referee {...props} />} />
+					<Route path="/point-table" exact render={(props) => <PointTable {...props} />} />
 				</Switch>
 			</BrowserRouter>
 		</div>
