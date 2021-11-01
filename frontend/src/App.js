@@ -5,12 +5,13 @@ import AboutUs from './components/AboutUs';
 import Login from './components/Authentication/Login';
 import Registration from './components/Authentication/Registration';
 import FAQ from './components/FAQ';
-import Hotels from './components/Hotels'
+import Hotels from './components/Hotels';
 import Landing from './components/Landing';
 import NavigationHeader from './components/Navbars/NavigationHeader';
 import Rules from './components/Rules';
 import Sponsors from './components/Sponsors';
 import Referee from './components/Referee';
+import Venues from './components/Venues';
 import PointTable from './components/PointTable';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 					<Route path="/rules" exact render={(props) => <Rules {...props} />} />
 					<Route path="/sponsors" exact render={(props) => <Sponsors {...props} />} />
 					<Route path="/referee-registration" exact render={(props) => <Referee {...props} />} />
+					<Route path="/venue" exact render={(props) => <Venues {...props} />} />
 					<Route path="/point-table" exact render={(props) => <PointTable {...props} />} />
 				</Switch>
 			</BrowserRouter>
