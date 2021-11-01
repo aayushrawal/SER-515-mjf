@@ -12,13 +12,16 @@ import Rules from './components/Rules';
 import Sponsors from './components/Sponsors';
 import Referee from './components/Referee';
 import Fixtures from './components/Fixtures';
+import Venues from './components/Venues';
+import PointTable from './components/PointTable';
+
 
 function App() {
 	return (
 		<div>
 			<BrowserRouter>
 				<NavigationHeader />
-				<Switch>
+				<Switch
 					<Route
 						path="/login"
 						exact
@@ -69,6 +72,17 @@ function App() {
 						exact
 						render={(props) => <Fixtures {...props} />}
 					/>
+					<Route path="/login" exact render={(props) => <Login {...props} />} />
+					<Route path="/register" exact render={(props) => <Registration {...props} />} />
+					<Route path="/" exact render={(props) => <Landing {...props} />} />
+					<Route path="/about-us" exact render={(props) => <AboutUs {...props} />} />
+					<Route path="/faq" exact render={(props) => <FAQ {...props} />} />
+					<Route path="/hotel" exact render={(props) => <Hotels {...props} />} />
+					<Route path="/rules" exact render={(props) => <Rules {...props} />} />
+					<Route path="/sponsors" exact render={(props) => <Sponsors {...props} />} />
+					<Route path="/referee-registration" exact render={(props) => <Referee {...props} />} />
+					<Route path="/venue" exact render={(props) => <Venues {...props} />} />
+					<Route path="/point-table" exact render={(props) => <PointTable {...props} />} />
 				</Switch>
 			</BrowserRouter>
 		</div>

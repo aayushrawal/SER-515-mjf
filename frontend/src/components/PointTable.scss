@@ -1,0 +1,30 @@
+.Fixtures-Body td, .Fixtures-Body tr {
+    color: gray;
+}
+
+.Title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 6rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+table {
+    text-align: center;
+    width: 75%;
+}
+
+.box {
+    margin: 5%
+}
+
+thead, tbody {
+    background-color: white;
+}
+
+th {
+    font-size: 1.3em;
+}
