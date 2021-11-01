@@ -1,5 +1,6 @@
 {
-    "name": "sparkys_soccer_tournament",
+
+    "name": "sparkys-soccer-tournament",
     "version": "1.0.0",
     "description": "Backend for sparkys soccer tournament website",
     "main": "server.js",
