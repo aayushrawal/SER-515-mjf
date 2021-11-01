@@ -32,6 +32,7 @@ app.get("/", (req, res, next) => {
 });
 
 require("./app/routes/user.routes")(app);
+require("./app/routes/referee.routes")(app);
 require("./app/routes/hotel.routes")(app);
 
 const PORT = process.env.PORT || 8080;
