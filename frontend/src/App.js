@@ -12,6 +12,7 @@ import Rules from './components/Rules';
 import Sponsors from './components/Sponsors';
 import Referee from './components/Referee';
 import Venues from './components/Venues';
+import PointTable from './components/PointTable';
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 					<Route path="/sponsors" exact render={(props) => <Sponsors {...props} />} />
 					<Route path="/referee-registration" exact render={(props) => <Referee {...props} />} />
 					<Route path="/venue" exact render={(props) => <Venues {...props} />} />
+					<Route path="/point-table" exact render={(props) => <PointTable {...props} />} />
 				</Switch>
 			</BrowserRouter>
 		</div>

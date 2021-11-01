@@ -101,6 +101,8 @@ const NavigationHeader = () => {
                 <NavItem>
                   <NavLink to="/venue" tag={Link}>
                     Venues
+                  <NavLink to="/point-table" tag={Link}>
+                    Points
                   </NavLink>
                 </NavItem>
               </Nav>
