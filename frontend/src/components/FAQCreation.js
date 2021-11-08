@@ -33,9 +33,9 @@ function FAQCreation() {
                 <Col lg="8">
                   <Card className="bg-gradient-secondary shadow">
                     <CardBody className="p-lg-5">
-                      <h4 className="mb-1">Enter the question and answer it.</h4>
+                      <h4 className="mb-1">Please enter the frequently asked question and it's answer.</h4>
                       <p className="mt-0">
-                        This answers and questions will be displayed in FAQ page.
+                        This answers and questions will be displayed on FAQ page.
                       </p>
                       <FormGroup>
                         <InputGroup className="input-group-alternative">
