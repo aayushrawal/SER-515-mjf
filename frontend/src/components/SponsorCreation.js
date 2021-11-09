@@ -16,8 +16,10 @@ import {
 } from "reactstrap";
 
 const SponsorCreation = () => {
+  const [imageName, setImageName] = useState("");
   const [data, setData] = useState({
     sponsorName: "",
+    sponsorImage: "",
   });
 
   const handle = (e) => {
@@ -26,8 +28,22 @@ const SponsorCreation = () => {
     setData(newdata);
   };
 
-  const addSponsor = () => {
-    console.log("Added sponsor");
+  const handleImage = (e) => {
+    let image_as_files = e.target.files[0];
+
+    setImageName(image_as_files.name);
+
+    let newData = {
+      ...data,
+      sponsorImage: image_as_files,
+    };
+    setData(newData);
+  };
+
+  const addSponsor = (e) => {
+    e.preventDefault();
+    console.log("data");
+    console.log(data);
   };
 
   return (
@@ -76,13 +92,31 @@ const SponsorCreation = () => {
                         />
                       </InputGroup>
                     </FormGroup>
+                    <FormGroup>
+                      <InputGroup className="mb-3">
+                        <div className="custom-file">
+                          <Input
+                            type="file"
+                            className="custom-file-input"
+                            id="sponsorImage"
+                            onChange={handleImage}
+                          />
+                          <label className="custom-file-label">
+                            <span className="file-upload-label">
+                              <i className="fa fa-file"></i>
+                            </span>
+                            {imageName === "" ? "Upload Image" : imageName}
+                          </label>
+                        </div>
+                      </InputGroup>
+                    </FormGroup>
                     <div>
                       <Button
                         block
                         className="btn-round"
                         color="default"
                         size="lg"
-                        type="button"
+                        type="submit"
                       >
                         Add Sponsor
                       </Button>
