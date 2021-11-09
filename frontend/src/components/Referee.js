@@ -1,10 +1,8 @@
-import React from 'react'
-
+import React from "react";
 
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
   FormGroup,
   Form,
@@ -22,8 +20,7 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
-
-import './Referee.scss'
+import "./Referee.scss";
 
 const Referee = () => {
   return (
@@ -104,9 +101,14 @@ const Referee = () => {
                     </FormGroup>
                     <FormGroup>
                       <UncontrolledDropdown>
-                        <DropdownToggle caret color="secondary" data-placement="right"
+                        <DropdownToggle
+                          caret
+                          color="secondary"
+                          data-placement="right"
                           id="tooltip159654437"
-                          size="sm" className="font-weight-700">
+                          size="sm"
+                          className="font-weight-700"
+                        >
                           Select event
                         </DropdownToggle>
                         <UncontrolledTooltip
@@ -114,29 +116,25 @@ const Referee = () => {
                           placement="right"
                           target="tooltip159654437"
                         >
-                          Selecting a category registers you for lower categories automatically
+                          Selecting a category registers you for lower
+                          categories automatically
                         </UncontrolledTooltip>
                         <DropdownMenu>
-                          <DropdownItem onClick={e => e.preventDefault()}>
+                          <DropdownItem onClick={(e) => e.preventDefault()}>
                             Category 1 - U8
                           </DropdownItem>
-                          <DropdownItem onClick={e => e.preventDefault()}>
+                          <DropdownItem onClick={(e) => e.preventDefault()}>
                             Category 2 - U48
                           </DropdownItem>
-                          <DropdownItem onClick={e => e.preventDefault()}>
+                          <DropdownItem onClick={(e) => e.preventDefault()}>
                             Category 3 - O48
                           </DropdownItem>
                         </DropdownMenu>
                       </UncontrolledDropdown>
                     </FormGroup>
 
-
                     <div className="text-center">
-                      <Button
-                        className="mt-4"
-                        color="primary"
-                        type="button"
-                      >
+                      <Button className="mt-4" color="primary" type="button">
                         Create account
                       </Button>
                     </div>
@@ -161,7 +159,6 @@ const Referee = () => {
       </section>
     </>
   );
+};
 
-}
-
-export default Referee
+export default Referee;
