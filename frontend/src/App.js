@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 
 import Login from "./components/Authentication/Login";
@@ -14,6 +14,7 @@ import Referee from "./components/Referee";
 import Fixtures from "./components/Fixtures";
 import Venues from "./components/Venues";
 import PointTable from "./components/PointTable";
+import TournamentDirectorHome from "./components/TournamentDirectorHome";
 
 function App() {
   return (
@@ -93,6 +94,11 @@ function App() {
             path="/point-table"
             exact
             render={(props) => <PointTable {...props} />}
+          />
+           <Route
+            path="/tournament-director/home"
+            exact
+            render={(props) => <TournamentDirectorHome {...props} />}
           />
         </Switch>
       </BrowserRouter>
