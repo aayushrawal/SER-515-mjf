@@ -16,8 +16,8 @@ import {
   Col,
 } from "reactstrap";
 
-const Registration = (props) => {
-  const url = "/api/auth/signup";
+const Registration = () => {
+  const url = "/api/users/registration";
   const [playerFields, setPlayerFields] = useState([
     {
       playerFullName: null,
@@ -31,7 +31,7 @@ const Registration = (props) => {
     coachEmail: "",
     teamName: "",
     teamCaptainName: "",
-    teamPlayers: [],
+    teamPlayers: playerFields,
   });
 
   const playerAdd = () => {
@@ -40,10 +40,12 @@ const Registration = (props) => {
     setPlayerFields(players);
   };
 
-  const playerRemove = (i) => {
+  const playerRemove = (playerFullName) => {
     const players = [...playerFields];
-    players.splice(i, 1);
-    setPlayerFields(players);
+    const newPlayers = players.filter(
+      (player) => player.playerFullName !== playerFullName
+    );
+    setPlayerFields(newPlayers);
   };
 
   const handle = (e) => {
@@ -58,29 +60,37 @@ const Registration = (props) => {
     setPlayerFields(players);
   }
 
-  const Signup = (e) => {
+  const signup = (e) => {
     e.preventDefault();
     let newData = { ...data, teamPlayers: [...playerFields] };
     setData(newData);
-    console.log(newData);
+    console.log(data);
+    // registerTeam();
+  };
 
-    // axios.post(url, {
-    //   firstName: data.firstName,
-    //   lastName: data.lastName,
-    //   phoneNumber: data.phoneNumber,
-    //   roles: [data.roles],
-    //   email: data.email,
-    //   password: data.password,
-    // },
-    //   {
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then(res => {
-    //     console.log(res.data)
-    //   })
+  const registerTeam = () => {
+    axios
+      .post(
+        url,
+        {
+          coachFirstName: data.coachFirstName,
+          coachLastName: data.coachLastName,
+          coachPhoneNumber: data.coachPhoneNumber,
+          coachEmail: data.coachEmail,
+          teamName: data.teamName,
+          teamCaptainName: data.teamCaptainName,
+          teamPlayers: data.teamPlayers,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
   };
 
   return (
@@ -104,7 +114,7 @@ const Registration = (props) => {
                   <div className="text-center text-muted mb-4">
                     <small>Register Team</small>
                   </div>
-                  <Form role="form" onSubmit={Signup}>
+                  <Form role="form" onSubmit={signup}>
                     <FormGroup>
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
@@ -227,7 +237,9 @@ const Registration = (props) => {
                               <span className="btn-icon">
                                 <i
                                   className="fa fa-minus-circle fa-lg"
-                                  onClick={playerRemove}
+                                  onClick={() => {
+                                    playerRemove(player.playerFullName);
+                                  }}
                                 ></i>
                               </span>
                               <span className="btn-icon">
