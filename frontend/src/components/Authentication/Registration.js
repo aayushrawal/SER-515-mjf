@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 import "./Registration.scss";
+import Alerts from "../Alerts";
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
   FormGroup,
   Form,
@@ -14,81 +14,153 @@ import {
   InputGroup,
   Container,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
-
-const Registration = (props) => {
-  const url = "/api/auth/signup"
-  const [playerFields, setPlayerFields] = useState([{
-    playerName: null
-  }]);
+const Registration = () => {
+  const url = "/api/users/registration";
+  const [isAlert, setIsAlert] = useState(false);
+  const [alertColor, setAlertColor] = useState("");
+  const [alertStatus, setAlertStatus] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [playerFields, setPlayerFields] = useState([
+    {
+      playerFullName: null,
+    },
+  ]);
 
   const [data, setData] = useState({
-    firstName: "",
-    lastName: '',
-    roles: "",
-    phoneNumber: "",
-    email: "",
+    coachFirstName: "",
+    coachLastName: "",
+    coachPhoneNumber: "",
+    coachEmail: "",
     teamName: "",
-    cptName: "",
-    playerName:"",
-    players: []
+    teamCaptainName: "",
+    teamPlayers: playerFields,
   });
-
 
   const playerAdd = () => {
     const players = [...playerFields];
-    players.push({ playerName: null });
+    players.push({ playerFullName: null });
     setPlayerFields(players);
-  }
+    let newData = { ...data, teamPlayers: [...players] };
+    setData(newData);
+  };
 
-  const playerRemove = (i) => {
+  const playerRemove = (i, e) => {
     const players = [...playerFields];
     players.splice(i, 1);
     setPlayerFields(players);
-  }
+    let newData = { ...data, teamPlayers: [...players] };
+    setData(newData);
+  };
 
   const handle = (e) => {
-    const newdata = { ...data }
-    newdata[e.target.id] = e.target.value
-    setData(newdata)
-  }
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+  };
 
-  function handlePlayerData(i, event) {
-    const players = [...playerFields];
-    players[i].playerName = event.target.value;
+  const resetForm = () => {
+    const obj = {
+      coachFirstName: "",
+      coachLastName: "",
+      coachPhoneNumber: "",
+      coachEmail: "",
+      teamName: "",
+      teamCaptainName: "",
+    };
+
+    const players = [
+      {
+        playerFullName: null,
+      },
+    ];
+
     setPlayerFields(players);
-  }
 
-  const Signup = (e) => {
-    e.preventDefault();
-    let newData = { ...data, players: [...playerFields] };
+    const newObj = {
+      ...obj,
+      teamPlayers: players,
+    };
+
+    setData(newObj);
+  };
+
+  const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
+    setIsAlert(true);
+    setAlertColor(alertColor);
+    setAlertStatus(alertStatus);
+    setAlertMessage(alertMessage);
+  };
+
+  const resetAlertMessage = () => {
+    setIsAlert(false);
+    setAlertColor("");
+    setAlertStatus("");
+    setAlertMessage("");
+  };
+
+  function handlePlayerData(i, e) {
+    const players = [...playerFields];
+    players[i].playerFullName = e.target.value;
+    setPlayerFields(players);
+    let newData = { ...data, teamPlayers: [...players] };
     setData(newData);
-    console.log(newData);
-
-    // axios.post(url, {
-    //   firstName: data.firstName,
-    //   lastName: data.lastName,
-    //   phoneNumber: data.phoneNumber,
-    //   roles: [data.roles],
-    //   email: data.email,
-    //   password: data.password,
-    // },
-    //   {
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then(res => {
-    //     console.log(res.data)
-    //   })
   }
+
+  const signup = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(
+        url,
+        {
+          coachFirstName: data.coachFirstName,
+          coachLastName: data.coachLastName,
+          coachPhoneNumber: data.coachPhoneNumber,
+          coachEmail: data.coachEmail,
+          teamName: data.teamName,
+          teamCaptainName: data.teamCaptainName,
+          teamPlayers: data.teamPlayers,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          const createObj = {
+            alertColor: "success",
+            alertStatus: "Success!",
+            alertMessage: "Team registration successful!",
+          };
+          createAlertMessage(createObj);
+          resetForm();
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        } else {
+          const createObj = {
+            alertColor: "danger",
+            alertStatus: "Failure!",
+            alertMessage: "Something went wrong!",
+          };
+          createAlertMessage(createObj);
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        }
+      });
+  };
 
   return (
-    <div useRef="main">
+    <div useref="main">
       <div className="section section-shaped section-lg">
         <div className="shape shape-style-1 bg-gradient-default">
           <span />
@@ -101,6 +173,15 @@ const Registration = (props) => {
           <span />
         </div>
         <Container className="pt-lg-7">
+          {isAlert ? (
+            <Alerts
+              color={alertColor}
+              status={alertStatus}
+              message={alertMessage}
+            />
+          ) : (
+            ""
+          )}
           <Row className="justify-content-center">
             <Col lg="5">
               <Card className="bg-secondary shadow border-0">
@@ -108,41 +189,53 @@ const Registration = (props) => {
                   <div className="text-center text-muted mb-4">
                     <small>Register Team</small>
                   </div>
-                  <Form role="form" onSubmit={Signup}>
+                  <Form role="form" onSubmit={signup}>
                     <FormGroup>
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                          <i class="fa fa-user"></i>
+                            <i className="fa fa-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Coach FirstName" type="text" id="firstName"
-                          input onChange={handle}
-                          value={data.firstName} />
+                        <Input
+                          placeholder="Coach FirstName"
+                          type="text"
+                          id="coachFirstName"
+                          onChange={handle}
+                          value={data.coachFirstName}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                          <i class="fa fa-user"></i>
+                            <i className="fa fa-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Coach LastName" type="text" id="lastName"
-                          value={data.lastName}
-                          input onChange={handle} />
+                        <Input
+                          placeholder="Coach LastName"
+                          type="text"
+                          id="coachLastName"
+                          value={data.coachLastName}
+                          onChange={handle}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                          <i class="fa fa-phone"></i>
+                            <i className="fa fa-phone"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Phone number" type="text" id="phoneNumber"
-                          value={data.phoneNumber}
-                          input onChange={handle} />
+                        <Input
+                          placeholder="Phone number"
+                          type="text"
+                          id="coachPhoneNumber"
+                          value={data.coachPhoneNumber}
+                          onChange={handle}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -152,9 +245,12 @@ const Registration = (props) => {
                             <i className="ni ni-email-83" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Email" type="email" id="email"
-                          value={data.email}
-                          input onChange={handle}
+                        <Input
+                          placeholder="Coach Email"
+                          type="email"
+                          id="coachEmail"
+                          value={data.coachEmail}
+                          onChange={handle}
                         />
                       </InputGroup>
                     </FormGroup>
@@ -162,12 +258,16 @@ const Registration = (props) => {
                       <InputGroup className="input-group-alternative mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
-                          <i class="fa fa-users"></i>
+                            <i className="fa fa-users"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Team Name" type="text" id="teamName"
+                        <Input
+                          placeholder="Team Name"
+                          type="text"
+                          id="teamName"
                           value={data.teamName}
-                          input onChange={handle} />
+                          onChange={handle}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -177,24 +277,15 @@ const Registration = (props) => {
                             <i className="fa fa-user" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Captain Name" type="text" id="cptName"
-                          value={data.cptName}
-                          input onChange={handle} />
+                        <Input
+                          placeholder="Team Captain Name"
+                          type="text"
+                          id="teamCaptainName"
+                          value={data.teamCaptainName}
+                          onChange={handle}
+                        />
                       </InputGroup>
                     </FormGroup>
-                    <FormGroup>
-                      <InputGroup className="input-group-alternative mb-3">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="fa fa-user" />
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input placeholder="Player Name" type="text" id="playerName"
-                          value={data.playerName}
-                          input onChange={handle} />
-                      </InputGroup>
-                    </FormGroup>
-                    
                     {playerFields.map((player, idx) => (
                       <div key={idx}>
                         <FormGroup>
@@ -206,17 +297,31 @@ const Registration = (props) => {
                                     <i className="fa fa-user" />
                                   </InputGroupText>
                                 </InputGroupAddon>
-                                <Input placeholder="Add Players" type="text" id="playerName"
-                                  value={player.playerName || ""}
-                                  input onChange={e => handlePlayerData(idx, e)} />
+                                <Input
+                                  placeholder="Enter player fullname"
+                                  type="text"
+                                  id="playerFullName"
+                                  value={player.playerFullName || ""}
+                                  onChange={(e) => {
+                                    handlePlayerData(idx, e);
+                                  }}
+                                />
                               </InputGroup>
                             </Col>
                             <Col md="2" className="d-flex">
                               <span className="btn-icon">
-                                <i class="fa fa-minus-circle fa-lg" onClick={playerRemove}></i>
+                                <i
+                                  className="fa fa-minus-circle fa-lg"
+                                  onClick={(e) => {
+                                    playerRemove(idx, e);
+                                  }}
+                                ></i>
                               </span>
                               <span className="btn-icon">
-                                <i class="fa fa-plus fa-lg" onClick={playerAdd}></i>
+                                <i
+                                  className="fa fa-plus fa-lg"
+                                  onClick={playerAdd}
+                                ></i>
                               </span>
                             </Col>
                           </Row>
@@ -224,11 +329,7 @@ const Registration = (props) => {
                       </div>
                     ))}
                     <div className="text-center">
-                      <Button
-                        className="mt-4"
-                        color="primary"
-                        type="submit"
-                      >
+                      <Button className="mt-4" color="primary" type="submit">
                         Create Team
                       </Button>
                     </div>
@@ -241,7 +342,7 @@ const Registration = (props) => {
         );
       </div>
     </div>
-  )
+  );
 };
 
 export default Registration;
