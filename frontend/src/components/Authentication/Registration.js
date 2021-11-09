@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Registration.scss";
+import Alerts from "../Alerts";
 import {
   Button,
   Card,
@@ -18,6 +19,10 @@ import {
 
 const Registration = () => {
   const url = "/api/users/registration";
+  const [isAlert, setIsAlert] = useState(false);
+  const [alertColor, setAlertColor] = useState("");
+  const [alertStatus, setAlertStatus] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
   const [playerFields, setPlayerFields] = useState([
     {
       playerFullName: null,
@@ -38,14 +43,16 @@ const Registration = () => {
     const players = [...playerFields];
     players.push({ playerFullName: null });
     setPlayerFields(players);
+    let newData = { ...data, teamPlayers: [...players] };
+    setData(newData);
   };
 
-  const playerRemove = (playerFullName) => {
+  const playerRemove = (i, e) => {
     const players = [...playerFields];
-    const newPlayers = players.filter(
-      (player) => player.playerFullName !== playerFullName
-    );
-    setPlayerFields(newPlayers);
+    players.splice(i, 1);
+    setPlayerFields(players);
+    let newData = { ...data, teamPlayers: [...players] };
+    setData(newData);
   };
 
   const handle = (e) => {
@@ -54,21 +61,57 @@ const Registration = () => {
     setData(newdata);
   };
 
+  const resetForm = () => {
+    const obj = {
+      coachFirstName: "",
+      coachLastName: "",
+      coachPhoneNumber: "",
+      coachEmail: "",
+      teamName: "",
+      teamCaptainName: "",
+    };
+
+    const players = [
+      {
+        playerFullName: null,
+      },
+    ];
+
+    setPlayerFields(players);
+
+    const newObj = {
+      ...obj,
+      teamPlayers: players,
+    };
+
+    setData(newObj);
+  };
+
+  const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
+    setIsAlert(true);
+    setAlertColor(alertColor);
+    setAlertStatus(alertStatus);
+    setAlertMessage(alertMessage);
+  };
+
+  const resetAlertMessage = () => {
+    setIsAlert(false);
+    setAlertColor("");
+    setAlertStatus("");
+    setAlertMessage("");
+  };
+
   function handlePlayerData(i, e) {
     const players = [...playerFields];
     players[i].playerFullName = e.target.value;
     setPlayerFields(players);
+    let newData = { ...data, teamPlayers: [...players] };
+    setData(newData);
   }
 
   const signup = (e) => {
     e.preventDefault();
-    let newData = { ...data, teamPlayers: [...playerFields] };
-    setData(newData);
-    console.log(data);
-    // registerTeam();
-  };
 
-  const registerTeam = () => {
     axios
       .post(
         url,
@@ -89,7 +132,30 @@ const Registration = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
+        if (res.status === 200) {
+          const createObj = {
+            alertColor: "success",
+            alertStatus: "Success!",
+            alertMessage: "Team registration successful!",
+          };
+          createAlertMessage(createObj);
+          resetForm();
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        } else {
+          const createObj = {
+            alertColor: "danger",
+            alertStatus: "Failure!",
+            alertMessage: "Something went wrong!",
+          };
+          createAlertMessage(createObj);
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        }
       });
   };
 
@@ -107,6 +173,15 @@ const Registration = () => {
           <span />
         </div>
         <Container className="pt-lg-7">
+          {isAlert ? (
+            <Alerts
+              color={alertColor}
+              status={alertStatus}
+              message={alertMessage}
+            />
+          ) : (
+            ""
+          )}
           <Row className="justify-content-center">
             <Col lg="5">
               <Card className="bg-secondary shadow border-0">
@@ -237,8 +312,8 @@ const Registration = () => {
                               <span className="btn-icon">
                                 <i
                                   className="fa fa-minus-circle fa-lg"
-                                  onClick={() => {
-                                    playerRemove(player.playerFullName);
+                                  onClick={(e) => {
+                                    playerRemove(idx, e);
                                   }}
                                 ></i>
                               </span>
