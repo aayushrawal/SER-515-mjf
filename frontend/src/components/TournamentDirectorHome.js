@@ -32,7 +32,7 @@ const TournamentDirectorHome = () => {
                 <div className="tournamentdirectorhome-Body">
                     <div className="col-12">
                         <div className="text-center">
-                            <NavbarBrand to="/" tag={Link}>
+                            <NavbarBrand to="/tournament-director/faq-creation" tag={Link}>
                                 <Button onclick={EditFAQ}
                                     className="mt-4"
                                     color="info"

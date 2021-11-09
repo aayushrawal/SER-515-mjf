@@ -15,6 +15,7 @@ import Fixtures from "./components/Fixtures";
 import Venues from "./components/Venues";
 import PointTable from "./components/PointTable";
 import TournamentDirectorHome from "./components/TournamentDirectorHome";
+import FAQCreation from "./components/FAQCreation";
 
 function App() {
   return (
@@ -99,6 +100,11 @@ function App() {
             path="/tournament-director/home"
             exact
             render={(props) => <TournamentDirectorHome {...props} />}
+          />
+          <Route
+            path="/tournament-director/faq-creation"
+            exact
+            render={(props) => <FAQCreation {...props} />}
           />
         </Switch>
       </BrowserRouter>
