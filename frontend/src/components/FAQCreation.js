@@ -1,12 +1,102 @@
-import React from 'react';
+import React , { useState } from 'react';
 import './FAQCreation.scss';
+import Alerts from './Alerts';
+import axios from "axios";
 
 import {
   Button, Card, CardBody, FormGroup, Input, InputGroupAddon, InputGroupText,
   InputGroup, Container, Row, Col
 } from "reactstrap";
 
-function FAQCreation() {
+const FAQCreation = () => {
+
+  const url = "/api/faq/faq-director";
+  const [isAlert, setIsAlert] = useState(false);
+  const [alertColor, setAlertColor] = useState("");
+  const [alertStatus, setAlertStatus] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  
+  const [data, setData] = useState({
+    que: "",
+    ans: "",
+  });
+
+  const handle = (e) => {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+  };
+  
+  const resetForm = () => {
+    const obj = {
+      que: "",
+      ans: "",
+    };
+    const newObj = {
+      ...obj,
+    };
+    setData(newObj);
+  };
+
+  const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
+    setIsAlert(true);
+    setAlertColor(alertColor);
+    setAlertStatus(alertStatus);
+    setAlertMessage(alertMessage);
+  };
+
+  const resetAlertMessage = () => {
+    setIsAlert(false);
+    setAlertColor("");
+    setAlertStatus("");
+    setAlertMessage("");
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(
+        url,
+        {
+          que: data.que,
+          ans: data.ans,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          const createObj = {
+            alertColor: "success",
+            alertStatus: "Success!",
+            alertMessage: "FAQ entered successful!",
+          };
+          createAlertMessage(createObj);
+          resetForm();
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        } else {
+          const createObj = {
+            alertColor: "danger",
+            alertStatus: "Failure!",
+            alertMessage: "Something went wrong!",
+          };
+          createAlertMessage(createObj);
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        }
+      });
+  };
+
   return (
     <div useRef="main">
       <div className="section section-shaped section-lg">
@@ -30,6 +120,15 @@ function FAQCreation() {
         <section className="section section-lg pt-lg-0 section-contact-us">
           <Container>
             <Row className="justify-content-center mt--300">
+            {isAlert ? (
+            <Alerts
+              color={alertColor}
+              status={alertStatus}
+              message={alertMessage}
+            />
+          ) : (
+            ""
+          )}
               <Col lg="8">
                 <Card className="bg-gradient-secondary shadow">
                   <CardBody className="p-lg-5">
@@ -45,6 +144,9 @@ function FAQCreation() {
                           placeholder="Enter the question over here"
                           rows="2"
                           type="textarea"
+                          id="que"
+                          onChange={handle}
+                          value={data.que}
                         />
                       </InputGroup>
                     </FormGroup>
@@ -56,6 +158,9 @@ function FAQCreation() {
                         placeholder="Type your Answer..."
                         rows="4"
                         type="textarea"
+                        id="ans"
+                        onChange={handle}
+                        value={data.ans}
                       />
                     </FormGroup>
                     <div>
@@ -65,6 +170,7 @@ function FAQCreation() {
                         color="default"
                         size="lg"
                         type="button"
+                        onClick = {submit}
                       >
                         Add FAQ
                       </Button>
