@@ -17,6 +17,7 @@ import PointTable from './components/PointTable';
 import TournamentDirectorHome from './components/TournamentDirectorHome';
 import FAQCreation from './components/FAQCreation';
 import RefereeDirectorHome from './components/RefereeDirectorHome';
+import VolunteerDirectorHome from './components/VolunteerDirectorHome';
 
 function App() {
 	return (
@@ -56,6 +57,11 @@ function App() {
 						render={(props) => <FAQCreation {...props} />}
 					/>
 					<Route path="/referee-director/home" exact render={(props) => <RefereeDirectorHome {...props} />} />
+					<Route
+						path="/volunteer-director/home"
+						exact
+						render={(props) => <VolunteerDirectorHome {...props} />}
+					/>
 				</Switch>
 			</BrowserRouter>
 		</div>

@@ -1,0 +1,21 @@
+.volunteerdirectorhome {
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: right;
+    color: #eeb69e;
+    padding: 100px;
+    font-size: 6rem;
+    font-weight: bold;
+}
+
+.volunteerdirectorhome-Body {
+    padding: 80px;
+    padding-left: 250px;
+    padding-right: 250px;
+    font-weight: bold;
+    text-align: justify;
+}
