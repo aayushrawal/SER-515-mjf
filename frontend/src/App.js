@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
-
 import Login from "./components/Authentication/Login";
 import Registration from "./components/Authentication/Registration";
 import FAQ from "./components/FAQ";
@@ -17,6 +16,7 @@ import PointTable from "./components/PointTable";
 import TournamentDirectorHome from "./components/TournamentDirectorHome";
 import FAQCreation from "./components/FAQCreation";
 import RefereeDirectorHome from "./components/RefereeDirectorHome";
+import VolunteerDirectorHome from './components/VolunteerDirectorHome';
 import SponsorCreation from "./components/SponsorCreation";
 
 function App() {
@@ -117,7 +117,11 @@ function App() {
             path="/referee-director/home"
             exact
             render={(props) => <RefereeDirectorHome {...props} />}
-          />
+          <Route
+						path="/volunteer-director/home"
+						exact
+						render={(props) => <VolunteerDirectorHome {...props} />}
+					/>
         </Switch>
       </BrowserRouter>
     </div>
