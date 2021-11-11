@@ -6,6 +6,7 @@ import Registration from './components/Authentication/Registration';
 import TournamentDirectorLogin from './components/Authentication/TournamentDirectorLogin';
 import TeamDirectorLogin from './components/Authentication/TeamDirectorLogin';
 import VolunteerDirectorLogin from './components/Authentication/VolunteerDirectorLogin';
+import RefereeDirectorLogin from './components/Authentication/RefereeDirectorLogin';
 import FAQ from './components/FAQ';
 import Hotels from './components/Hotels';
 import Landing from './components/Landing';
@@ -80,6 +81,10 @@ function App() {
 						path="/volunteer-director/login"
 						exact
 						render={(props) => <VolunteerDirectorLogin {...props} />}
+					<Route
+						path="/referee-director/login"
+						exact
+						render={(props) => <RefereeDirectorLogin {...props} />}
 					/>
 				</Switch>
 			</BrowserRouter>
