@@ -4,6 +4,7 @@ import AboutUs from './components/AboutUs';
 import Login from './components/Authentication/Login';
 import Registration from './components/Authentication/Registration';
 import TournamentDirectorLogin from './components/Authentication/TournamentDirectorLogin';
+import RefereeDirectorLogin from './components/Authentication/RefereeDirectorLogin';
 import FAQ from './components/FAQ';
 import Hotels from './components/Hotels';
 import Landing from './components/Landing';
@@ -72,6 +73,11 @@ function App() {
 						path="/volunteer-director/home"
 						exact
 						render={(props) => <VolunteerDirectorHome {...props} />}
+					/>
+					<Route
+						path="/referee-director/login"
+						exact
+						render={(props) => <RefereeDirectorLogin {...props} />}
 					/>
 				</Switch>
 			</BrowserRouter>

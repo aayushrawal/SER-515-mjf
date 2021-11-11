@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './TournamentDirectorLogin.scss';
+import './RefereeDirectorLogin.scss';
 
 import {
 	Button,
@@ -17,7 +17,7 @@ import {
 	Col
 } from 'reactstrap';
 
-const TournamentDirectorLogin = (props) => {
+const RefereeDirectorLogin = (props) => {
 	return (
 		<div useRef="main">
 			<div className="section section-shaped section-lg">
@@ -38,7 +38,7 @@ const TournamentDirectorLogin = (props) => {
 								<Card className="bg-secondary shadow border-0">
 									<CardBody className="px-lg-5 py-lg-5">
 										<div className="text-center text-muted mb-4">
-											<small>Tournament Director Login</small>
+											<small>Referee Director Login</small>
 										</div>
 										<Form role="form">
 											<FormGroup>
@@ -78,4 +78,4 @@ const TournamentDirectorLogin = (props) => {
 	);
 };
 
-export default TournamentDirectorLogin;
+export default RefereeDirectorLogin;
