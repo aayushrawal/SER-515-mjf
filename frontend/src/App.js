@@ -4,6 +4,8 @@ import AboutUs from './components/AboutUs';
 import Login from './components/Authentication/Login';
 import Registration from './components/Authentication/Registration';
 import TournamentDirectorLogin from './components/Authentication/TournamentDirectorLogin';
+import TeamDirectorLogin from './components/Authentication/TeamDirectorLogin';
+import VolunteerDirectorLogin from './components/Authentication/VolunteerDirectorLogin';
 import RefereeDirectorLogin from './components/Authentication/RefereeDirectorLogin';
 import FAQ from './components/FAQ';
 import Hotels from './components/Hotels';
@@ -74,6 +76,11 @@ function App() {
 						exact
 						render={(props) => <VolunteerDirectorHome {...props} />}
 					/>
+					<Route path="/team-director/login" exact render={(props) => <TeamDirectorLogin {...props} />} />
+					<Route
+						path="/volunteer-director/login"
+						exact
+						render={(props) => <VolunteerDirectorLogin {...props} />}
 					<Route
 						path="/referee-director/login"
 						exact
