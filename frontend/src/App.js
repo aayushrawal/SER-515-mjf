@@ -81,10 +81,6 @@ function App() {
 						path="/volunteer-director/login"
 						exact
 						render={(props) => <VolunteerDirectorLogin {...props} />}
-					<Route
-						path="/referee-director/login"
-						exact
-						render={(props) => <RefereeDirectorLogin {...props} />}
 					/>
 				</Switch>
 			</BrowserRouter>
