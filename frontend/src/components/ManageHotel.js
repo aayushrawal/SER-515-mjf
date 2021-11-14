@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ManageHotel.scss';
 import axios from 'axios';
-
-import { Button, Form } from 'reactstrap';
-
-import { Link } from 'react-router-dom';
+import HotelItem from './HotelItem';
 
 const ManageHotel = () => {
+	var newData = [];
+
+	const [ coachData, setData ] = useState(newData);
+
 	const url = '/api/hotels/booking';
 
-	const retrieve = (e) => {
-		e.preventDefault();
+	useEffect(() => {
+		getAllCoach();
+	}, []);
+
+	const getAllCoach = () => {
 		axios.get(url).then(function(response) {
-			console.log(response.data);
+			newData = response.data;
+			setData(newData);
 		});
 	};
 
@@ -33,17 +38,17 @@ const ManageHotel = () => {
 				<div className="managehotelhome-Body">
 					<div className="col-12">
 						<div className="text-center">
-							<Form role="form" onSubmit={retrieve}>
-								<div className="text-center">
-									<Button
-										className="mt-4"
-										color="warning"
-										type="submit"
-									>
-										Retrive Data
-									</Button>
-								</div>
-							</Form>
+							<div className="HotelItems">
+								{coachData.map((item, index) => {
+									return (
+										<HotelItem
+											index={index}
+											item={item}
+											key={index}
+										/>
+									);
+								})}
+							</div>
 						</div>
 					</div>
 				</div>
