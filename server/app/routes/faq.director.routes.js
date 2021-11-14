@@ -4,7 +4,7 @@ module.exports = (app) => {
     const router = require("express").Router();
   
     router.post("/faq-director", faq_director.create);
-  
+    router.get("/faq-director", faq_director.findAll);
     app.use("/api/faq", router);
   };
   
