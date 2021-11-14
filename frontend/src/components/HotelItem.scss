@@ -1,0 +1,35 @@
+.HotelItem {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 12px;
+    padding-top: 12px ;
+    align-items: flex-end;
+    justify-content:space-evenly;
+}
+.CoachName {
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.CoachEmail {
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.CoachVenue {
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.Submit {
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    padding-bottom: 10px;
+}

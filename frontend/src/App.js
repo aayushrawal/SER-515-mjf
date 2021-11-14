@@ -22,6 +22,7 @@ import FAQCreation from './components/FAQCreation';
 import RefereeDirectorHome from './components/RefereeDirectorHome';
 import VolunteerDirectorHome from './components/VolunteerDirectorHome';
 import SponsorCreation from './components/SponsorCreation';
+import ManageHotel from './components/ManageHotel';
 
 function App() {
 	return (
@@ -66,6 +67,11 @@ function App() {
 						render={(props) => <FAQCreation {...props} />}
 					/>
 					<Route
+						path="/tournament-director/manage-hotel"
+						exact
+						render={(props) => <ManageHotel {...props} />}
+					/>
+					<Route
 						path="/tournament-director/sponsor-creation"
 						exact
 						render={(props) => <SponsorCreation {...props} />}
@@ -81,6 +87,11 @@ function App() {
 						path="/volunteer-director/login"
 						exact
 						render={(props) => <VolunteerDirectorLogin {...props} />}
+					/>
+					<Route
+						path="/referee-director/login"
+						exact
+						render={(props) => <RefereeDirectorLogin {...props} />}
 					/>
 				</Switch>
 			</BrowserRouter>

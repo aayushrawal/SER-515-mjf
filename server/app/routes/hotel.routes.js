@@ -6,5 +6,7 @@ module.exports = (app) => {
   // register a user
   router.post("/booking", hotels.create);
 
+  router.get("/booking", hotels.findAll);
+
   app.use("/api/hotels", router);
 };
