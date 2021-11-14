@@ -45,7 +45,7 @@ const TournamentDirectorHome = () => {
               </NavbarBrand>
             </div>
             <div className="text-center">
-              <NavbarBrand to="/" tag={Link}>
+              <NavbarBrand to="/tournament-director/manage-hotel" tag={Link}>
                 <Button
                   onclick={ManageHotel}
                   className="mt-4"

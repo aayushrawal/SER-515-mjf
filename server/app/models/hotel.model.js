@@ -1,7 +1,8 @@
 module.exports = (mongoose) => {
-  const Hotel = mongoose.model(
+
+   const Hotel = mongoose.model(
     "hotel",
-    mongoose.Schema(
+     mongoose.Schema(
       {
         coachName: String,
         coachEmail: String,
@@ -9,5 +10,6 @@ module.exports = (mongoose) => {
       { timestamps: true }
     )
   );
+  
   return Hotel;
 };
