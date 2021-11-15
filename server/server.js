@@ -34,6 +34,7 @@ app.get("/", (req, res, next) => {
 require("./app/routes/user.routes")(app);
 require("./app/routes/referee.routes")(app);
 require("./app/routes/hotel.routes")(app);
+require("./app/routes/sponsor.routes")(app);
 require("./app/routes/faq.director.routes")(app);
 require("./app/routes/hotel.director.routes")(app)
 
