@@ -33,9 +33,10 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  const {que} = req.body.que;
+  const que = req.query.que;
   Faq.find(que)
     .then(data => {
+      console.log(que);
       res.send(data);
     })
     .catch(err => {
