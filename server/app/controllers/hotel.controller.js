@@ -33,3 +33,20 @@ exports.create = (req, res) => {
       });
     });
 };
+
+// Retrieve all Coaches from the database
+exports.findAll = (req, res) => {
+  const coachName = req.query.coachName;
+  var condition = coachName ? { coachName: { $regex: new RegExp(coachName), $options: "i" } } : {};
+
+  Hotel.find(condition)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Coaches."
+      });
+    });
+};

@@ -1,5 +1,6 @@
-import React from "react";
-import "./Hotels.scss";
+import React, { useState } from "react";
+import axios from "axios";
+import Alerts from "./Alerts";
 
 import {
   Button,
@@ -21,6 +22,98 @@ const SubmitForm = (e) => {
 };
 
 const Hotels = (props) => {
+
+  const url = "/api/hotels/booking";
+  const [isAlert, setIsAlert] = useState(false);
+  const [alertColor, setAlertColor] = useState("");
+  const [alertStatus, setAlertStatus] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const [data, setData] = useState({
+    coachName: "",
+    coachEmail: "",
+  });
+
+  const handle = (e) => {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+  };
+
+  const resetForm = () => {
+    const obj = {
+      coachName: "",
+      coachEmail: "",
+    };
+
+    const newObj = {
+      ...obj,
+    };
+
+    setData(newObj);
+  };
+
+  const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
+    setIsAlert(true);
+    setAlertColor(alertColor);
+    setAlertStatus(alertStatus);
+    setAlertMessage(alertMessage);
+  };
+
+  const resetAlertMessage = () => {
+    setIsAlert(false);
+    setAlertColor("");
+    setAlertStatus("");
+    setAlertMessage("");
+  };
+
+  const signup = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(
+        url,
+        {
+          coachName: data.coachName,
+          coachEmail: data.coachEmail,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          const createObj = {
+            alertColor: "success",
+            alertStatus: "Success!",
+            alertMessage: "Hotel booking request successful!",
+          };
+          createAlertMessage(createObj);
+          resetForm();
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        } else {
+          const createObj = {
+            alertColor: "danger",
+            alertStatus: "Failure!",
+            alertMessage: "Something went wrong!",
+          };
+          createAlertMessage(createObj);
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        }
+      });
+  };
+
+
+
   return (
     <div useRef="main">
       <div className="section section-shaped section-lg">
@@ -79,7 +172,7 @@ const Hotels = (props) => {
                         <div className="text-center text-muted mb-4">
                           <small>Request for Hotel Booking</small>
                         </div>
-                        <Form role="form" onSubmit={SubmitForm}>
+                        <Form role="form" onSubmit={signup}>
                           <FormGroup>
                             <InputGroup className="input-group-alternative mb-3">
                               <InputGroupAddon addonType="prepend">
@@ -87,7 +180,7 @@ const Hotels = (props) => {
                                   <i className="ni ni-hat-3" />
                                 </InputGroupText>
                               </InputGroupAddon>
-                              <Input placeholder="Name" type="text" id="name" />
+                              <Input placeholder="Name" type="text" id="coachName" value={data.coachName} onChange={handle}/>
                             </InputGroup>
                           </FormGroup>
                           <FormGroup>
@@ -97,7 +190,7 @@ const Hotels = (props) => {
                                   <i className="ni ni-email-83" />
                                 </InputGroupText>
                               </InputGroupAddon>
-                              <Input placeholder="Email" type="email" />
+                              <Input placeholder="Email" type="email" id="coachEmail" value={data.coachEmail} onChange={handle}/>
                             </InputGroup>
                           </FormGroup>
                           <div className="text-center">
@@ -105,6 +198,7 @@ const Hotels = (props) => {
                               className="mt-4"
                               color="warning"
                               type="submit"
+                
                             >
                               Submit Form
                             </Button>
@@ -112,6 +206,15 @@ const Hotels = (props) => {
                         </Form>
                       </CardBody>
                     </Card>
+                    {isAlert ? (
+            <Alerts
+              color={alertColor}
+              status={alertStatus}
+              message={alertMessage}
+            />
+          ) : (
+            ""
+          )}
                   </Col>
                 </Row>
               </Container>
