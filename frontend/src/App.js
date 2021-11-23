@@ -25,6 +25,7 @@ import RefereeDirectorHome from './components/RefereeDirectorHome';
 import VolunteerDirectorHome from './components/VolunteerDirectorHome';
 import SponsorCreation from './components/SponsorCreation';
 import ManageHotel from './components/ManageHotel';
+import ManageReferee from './components/ManageReferee';
 
 function App() {
 	return (
@@ -95,6 +96,11 @@ function App() {
 						path="/referee-director/login"
 						exact
 						render={(props) => <RefereeDirectorLogin {...props} />}
+					/>
+					<Route
+						path="/tournament-director/manage-referee"
+						exact
+						render={(props) => <ManageReferee {...props} />}
 					/>
 				</Switch>
 			</BrowserRouter>

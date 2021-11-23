@@ -57,3 +57,18 @@ exports.create = (req, res) => {
             });
         });
 };
+
+exports.findAll = (req, res) => {
+    const refereeName = req.query.refereeName;
+    Referee.find(refereeName)
+      .then(data => {
+        console.log(refereeName);
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving refereeName."
+        });
+      });
+  };
