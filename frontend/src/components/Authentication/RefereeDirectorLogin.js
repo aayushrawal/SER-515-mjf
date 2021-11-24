@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./RefereeDirectorLogin.scss";
 import Alerts from "../Alerts";
@@ -19,6 +20,7 @@ import {
 } from "reactstrap";
 
 const RefereeDirectorLogin = (props) => {
+  const history = useHistory();
   const url = "/api/users/login";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
@@ -80,9 +82,8 @@ const RefereeDirectorLogin = (props) => {
           resetForm();
           let response = res.data;
           if (response.status === "ok") {
-            console.log("LOGIN SUCCESS");
+            history.push("/referee-director/home");
           } else {
-            console.log("LOGIN FAIL");
             resetForm();
             const createObj = {
               alertColor: "danger",
@@ -127,7 +128,7 @@ const RefereeDirectorLogin = (props) => {
               <Col lg="5">
                 <Card className="bg-secondary shadow border-0">
                   <CardBody className="px-lg-5 py-lg-5">
-                    <div className="text-center text-muted mb-4">
+                    <div className="text-center mb-4">
                       <small>Referee Director Login</small>
                     </div>
                     <Form role="form" onSubmit={login}>
