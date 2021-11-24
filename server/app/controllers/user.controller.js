@@ -82,14 +82,19 @@ exports.findOne = (req, res) => {
   const user = directorList.find((director) => director.username === username);
 
   if (!user) {
-    res
-      .status(404)
-      .send({ message: "Cannot find user with username: " + username });
+    res.send({
+      status: "fail",
+      message: "Cannot find user with username: " + username,
+    });
   } else {
     if (user.password === password) {
-      res.status(200).send({ message: "successfully logged in!", user: user });
+      res.send({
+        status: "ok",
+        message: "successfully logged in!",
+        user: user,
+      });
     } else {
-      res.status(200).send({ message: "password is wrong!" });
+      res.send({ status: "fail", message: "password is wrong!" });
     }
   }
 };
