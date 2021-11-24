@@ -1,5 +1,6 @@
 const db = require("../models");
 const User = db.users;
+const directors = require("../models/directors.json");
 
 // create and save a user
 exports.create = (req, res) => {
@@ -70,4 +71,25 @@ exports.create = (req, res) => {
         message: err.message || "Unable to register user. Some error occured.",
       });
     });
+};
+
+exports.findOne = (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  const directorList = directors.users;
+
+  const user = directorList.find((director) => director.username === username);
+
+  if (!user) {
+    res
+      .status(404)
+      .send({ message: "Cannot find user with username: " + username });
+  } else {
+    if (user.password === password) {
+      res.status(200).send({ message: "successfully logged in!", user: user });
+    } else {
+      res.status(200).send({ message: "password is wrong!" });
+    }
+  }
 };
