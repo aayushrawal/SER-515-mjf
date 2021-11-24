@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./RefereeDirectorLogin.scss";
+import Alerts from "../Alerts";
 
 import {
   Button,
@@ -18,6 +19,11 @@ import {
 } from "reactstrap";
 
 const RefereeDirectorLogin = (props) => {
+  const url = "/api/users/login";
+  const [isAlert, setIsAlert] = useState(false);
+  const [alertColor, setAlertColor] = useState("");
+  const [alertStatus, setAlertStatus] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -29,15 +35,72 @@ const RefereeDirectorLogin = (props) => {
     setData(newdata);
   };
 
+  const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
+    setIsAlert(true);
+    setAlertColor(alertColor);
+    setAlertStatus(alertStatus);
+    setAlertMessage(alertMessage);
+  };
+
+  const resetAlertMessage = () => {
+    setIsAlert(false);
+    setAlertColor("");
+    setAlertStatus("");
+    setAlertMessage("");
+  };
+
+  const resetForm = () => {
+    const obj = {
+      username: "",
+      password: "",
+    };
+
+    setData(obj);
+  };
+
   const login = (e) => {
     e.preventDefault();
 
-    console.log("Testing login object");
-    console.log(data);
+    axios
+      .post(
+        url,
+        {
+          username: data.username,
+          password: data.password,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          resetForm();
+          let response = res.data;
+          if (response.status === "ok") {
+            console.log("LOGIN SUCCESS");
+          } else {
+            console.log("LOGIN FAIL");
+            resetForm();
+            const createObj = {
+              alertColor: "danger",
+              alertStatus: "Failure!",
+              alertMessage: "Unable to login!",
+            };
+            createAlertMessage(createObj);
+
+            setTimeout(() => {
+              resetAlertMessage();
+            }, 2500);
+          }
+        }
+      });
   };
 
   return (
-    <div useRef="main">
+    <div>
       <div className="section section-shaped section-lg">
         <div className="shape shape-style-1 bg-gradient-default">
           <span />
@@ -51,6 +114,15 @@ const RefereeDirectorLogin = (props) => {
         </div>
         <div className="hotel">
           <Container className="pt-lg-7">
+            {isAlert ? (
+              <Alerts
+                color={alertColor}
+                status={alertStatus}
+                message={alertMessage}
+              />
+            ) : (
+              ""
+            )}
             <Row className="justify-content-center">
               <Col lg="5">
                 <Card className="bg-secondary shadow border-0">
