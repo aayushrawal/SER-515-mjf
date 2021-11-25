@@ -6,13 +6,10 @@ import { Button, NavbarBrand } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const VolunteerDirectorHome = () => {
-    const TrackHostTeams = (e) => {
+    const AssignVolunteer = (e) => {
         e.preventDefault();
     }
-    const TrackVolunteerHours = (e) => {
-        e.preventDefault();
-    }
-    const TrackVolunteerRoles = (e) => {
+    const ListVolunteer = (e) => {
         e.preventDefault();
     }
     return (
@@ -32,35 +29,24 @@ const VolunteerDirectorHome = () => {
                 <div className="volunteerdirectorhome-Body">
                     <div className="col-12">
                         <div className="text-center">
-                            <NavbarBrand to="/" tag={Link}>
-                                <Button onclick={TrackHostTeams}
+                            <NavbarBrand to="/Assign-Volunteer" tag={Link}>
+                                <Button onclick={AssignVolunteer}
                                     className="mt-4"
                                     color="info"
                                     type="submit"
                                     class="btn btn-default"
-                                >Track Host Teams
+                                >Assign Match to Volunteers
                                 </Button>
                             </NavbarBrand>
                         </div>
-                        <div className="text-center">
-                            <NavbarBrand to="/" tag={Link}>
-                                <Button onclick={TrackVolunteerHours}
+                        <div className="text-center mx-auto d-block">
+                            <NavbarBrand to="/List-Volunteer" tag={Link}>
+                                <Button onclick={ListVolunteer}
                                     className="mt-4"
                                     color="info"
                                     type="submit"
                                     class="btn btn-default"
-                                >Track Volunteer Hours
-                                </Button>
-                            </NavbarBrand>
-                        </div>
-                        <div className="text-center">
-                            <NavbarBrand to="/" tag={Link}>
-                                <Button onclick={TrackVolunteerRoles}
-                                    className="mt-4"
-                                    color="info"
-                                    type="submit"
-                                    class="btn btn-default"
-                                >Track Volunteer Roles
+                                >List Of Volunteers
                                 </Button>
                             </NavbarBrand>
                         </div>
