@@ -1,44 +1,44 @@
 const db = require("../models");
+const mongoose = require("mongoose");
 const Sponsor = db.sponsors;
-const fs = require("fs");
-const path = require("path");
 
 // create and save a sponsor
-exports.create = (req, res) => {
-  console.log("Got in here!");
+exports.create = (req, res, next) => {
   // Validate request for correct input data
   if (!req.body.sponsorName) {
     res.status(400).send({ message: "sponsor name missing." });
     return;
   }
 
-  if (!req.body.sponsorImage) {
+  if (!req.file.filename) {
     res.status(400).send({ message: "sponsor image missing." });
     return;
   }
 
   // Create a sponsor
+  const url = req.protocol + "://" + req.get("host");
   const sponsor = new Sponsor({
+    _id: new mongoose.Types.ObjectId(),
     sponsorName: req.body.sponsorName,
-    sponsorImage: {
-      data: fs.readFileSync(
-        path.join(__dirname + "/uploads/" + req.file.filename)
-      ),
-      contentType: "image/png",
-    },
+    sponsorImage: url + "/uploads/" + req.file.filename,
   });
-
-  console.log(sponsor);
 
   // save sponsor to database
   sponsor
-    .save(sponsor)
-    .then((data) => {
-      res.send(data);
+    .save()
+    .then((result) => {
+      res.status(201).json({
+        message: "sponsor added successfully!",
+        sponsorName: {
+          _id: result._id,
+          sponsorImage: result.sponsorImage,
+        },
+      });
     })
     .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Unable to add sponsor. Some error occured.",
-      });
+      console.log(err),
+        res.status(500).send({
+          message: err.message || "Unable to add sponsor. Some error occured.",
+        });
     });
 };
