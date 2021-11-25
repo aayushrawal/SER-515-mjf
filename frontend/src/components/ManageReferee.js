@@ -96,6 +96,7 @@ const ManageReferee = () => {
               <tbody>
                 {
                     refereeData.map((referee, index) =>{
+                      if(referee.matchAssign == "Not Assigned")
                         return(
                         <tr>
                             <td>{index + 1}</td>

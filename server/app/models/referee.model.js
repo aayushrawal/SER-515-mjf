@@ -9,6 +9,7 @@ module.exports = (mongoose) => {
                 refereePhonenumber: String,
                 refereeDob: Date,
                 refereeEventcategory: String,
+                matchAssign: String
             },
             { timestamps: true }
         )

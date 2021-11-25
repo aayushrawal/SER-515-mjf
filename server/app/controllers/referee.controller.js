@@ -43,6 +43,7 @@ exports.create = (req, res) => {
         refereePhonenumber: req.body.refereePhonenumber,
         refereeDob: req.body.refereeDob,
         refereeEventcategory: req.body.refereeEventcategory,
+        matchAssign: "Not Assigned"
     });
 
     // save referee to database
@@ -69,6 +70,27 @@ exports.findAll = (req, res) => {
         res.status(500).send({
           message:
             err.message || "Some error occurred while retrieving refereeName."
+        });
+      });
+  };
+
+  exports.update = (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+          message: "Data to update can not be empty!"
+        });
+      }
+    Referee.findByIdAndUpdate(req.params.id, req.body, { matchAssign: req.body.matchAssign })
+    .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot update referee with id=${id}. Maybe referee was not found!`
+          });
+        } else res.send({ message: "Referee was updated successfully." });
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating referee with id=" + id
         });
       });
   };

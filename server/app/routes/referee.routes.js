@@ -8,5 +8,7 @@ module.exports = (app) => {
 
     router.get("/registration", referee.findAll);
 
+    router.put("/assign-referee/:id", referee.update);
+
     app.use("/api/referee", router);
 };
