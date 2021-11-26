@@ -29,6 +29,7 @@ const RefereeDirectorLogin = (props) => {
   const [data, setData] = useState({
     username: "",
     password: "",
+    directorNumber: 1,
   });
 
   const handle = (e) => {
@@ -53,6 +54,7 @@ const RefereeDirectorLogin = (props) => {
 
   const resetForm = () => {
     const obj = {
+      ...data,
       username: "",
       password: "",
     };
@@ -69,6 +71,7 @@ const RefereeDirectorLogin = (props) => {
         {
           username: data.username,
           password: data.password,
+          directorNumber: data.directorNumber,
         },
         {
           headers: {
