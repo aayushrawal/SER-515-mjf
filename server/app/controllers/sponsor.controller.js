@@ -10,7 +10,12 @@ exports.create = (req, res, next) => {
     return;
   }
 
-  if (!req.file.filename) {
+  if (!req.body.sponsorType) {
+    res.status(400).send({ message: "sponsor type missing." });
+    return;
+  }
+
+  if (!req.file) {
     res.status(400).send({ message: "sponsor image missing." });
     return;
   }
@@ -20,6 +25,7 @@ exports.create = (req, res, next) => {
   const sponsor = new Sponsor({
     _id: new mongoose.Types.ObjectId(),
     sponsorName: req.body.sponsorName,
+    sponsorType: req.body.sponsorType,
     sponsorImage: url + "/uploads/" + req.file.filename,
   });
 

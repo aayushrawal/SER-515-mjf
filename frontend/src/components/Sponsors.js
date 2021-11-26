@@ -1,12 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Sponsors.scss";
-
-import adidas from "../assets/img/brand/adidas.png";
-import kia from "../assets/img/brand/kia.png";
-import cola from "../assets/img/brand/cc.png";
-import qatar from "../assets/img/brand/qatar.png";
-import visa from "../assets/img/brand/visa.png";
-import wanda from "../assets/img/brand/wanda.png";
 
 import {
   Badge,
@@ -18,7 +12,31 @@ import {
   CardImg,
 } from "reactstrap";
 
-const AboutUs = () => {
+const Sponsors = () => {
+  const url = "/api/sponsor/sponsor-list";
+
+  const [sponsorList, setSponsorList] = useState([]);
+
+  useEffect(() => {
+    getSponsors();
+  }, []);
+
+  const getSponsors = () => {
+    axios
+      .get(url, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then(function (response) {
+        if (response.status === 200) {
+          let data = response.data;
+          setSponsorList(data.sponsors);
+        }
+      });
+  };
+
   return (
     <section className="section section-shaped section-lg">
       <div className="shape shape-style-1 bg-gradient-default">
@@ -50,134 +68,38 @@ const AboutUs = () => {
           <Row className="justify-content-center">
             <Col lg="12">
               <Row className="row-grid">
-                <Col lg="4">
-                  <Card className="card-lift--hover shadow border-0">
-                    <CardImg
-                      className="img-fluid"
-                      src={visa}
-                      alt="placeholder"
-                      width="100%"
-                    />
-                    <CardBody className="py-5">
-                      <h6 className="text-primary text-uppercase">Visa</h6>
+                {sponsorList.map((sponsor, idx) => (
+                  <>
+                    <Col lg="4" key={idx}>
+                      <Card className="card-lift--hover shadow border-0">
+                        <CardImg
+                          className="img-fluid"
+                          src={sponsor.sponsorImage}
+                          alt={sponsor.sponsorName}
+                          width="100%"
+                        />
+                        <CardBody className="py-5">
+                          <h6 className="text-primary text-uppercase">
+                            {sponsor.sponsorName}
+                          </h6>
 
-                      <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Title Sponsor
-                        </Badge>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-                <Col lg="4">
-                  <Card className="card-lift--hover shadow border-0">
-                    <CardImg
-                      className="img-fluid"
-                      src={qatar}
-                      alt="placeholder"
-                      width="100%"
-                      height="800vw"
-                    />
-                    <CardBody className="py-5">
-                      <h6 className="text-primary text-uppercase">Qatar</h6>
-
-                      <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Hospitality Partner
-                        </Badge>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-                <Col lg="4">
-                  <Card className="card-lift--hover shadow border-0">
-                    <CardImg
-                      className="img-fluid"
-                      src={wanda}
-                      alt="placeholder"
-                      width="100%"
-                    />
-                    <CardBody className="py-5">
-                      <h6 className="text-primary text-uppercase">Wanda</h6>
-
-                      <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Media Partner
-                        </Badge>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
+                          <div>
+                            <Badge color="primary" pill className="mr-1">
+                              {sponsor.sponsorType}
+                            </Badge>
+                          </div>
+                        </CardBody>
+                      </Card>
+                      <br />
+                      <br />
+                    </Col>
+                  </>
+                ))}
               </Row>
             </Col>
           </Row>
           <br />
           <br />
-          <Row className="justify-content-center">
-            <Col lg="12">
-              <Row className="row-grid">
-                <Col lg="4">
-                  <Card className="card-lift--hover shadow border-0">
-                    <CardImg
-                      className="img-fluid"
-                      src={kia}
-                      alt="placeholder"
-                      width="100%"
-                    />
-                    <CardBody className="py-5">
-                      <h6 className="text-primary text-uppercase">
-                        Hyundai Kia
-                      </h6>
-
-                      <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Travel Partner
-                        </Badge>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-                <Col lg="4">
-                  <Card className="card-lift--hover shadow border-0">
-                    <CardImg
-                      className="img-fluid"
-                      src={cola}
-                      alt="placeholder"
-                      width="100%"
-                    />
-                    <CardBody className="py-5">
-                      <h6 className="text-primary text-uppercase">Coca Cola</h6>
-
-                      <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Refreshment Sponsor
-                        </Badge>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-                <Col lg="4">
-                  <Card className="card-lift--hover shadow border-0">
-                    <CardImg
-                      className="img-fluid"
-                      src={adidas}
-                      alt="placeholder"
-                      width="100%"
-                    />
-                    <CardBody className="py-5">
-                      <h6 className="text-primary text-uppercase">Adidas</h6>
-
-                      <div>
-                        <Badge color="primary" pill className="mr-1">
-                          Merchandise Partner
-                        </Badge>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
         </Container>
       </Container>
       {/* SVG separator */}
@@ -197,4 +119,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default Sponsors;
