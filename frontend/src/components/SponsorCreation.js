@@ -51,6 +51,7 @@ const SponsorCreation = () => {
     }
   };
 
+  // add a sponsor
   const addSponsor = (e) => {
     e.preventDefault();
     const formData = new FormData();
