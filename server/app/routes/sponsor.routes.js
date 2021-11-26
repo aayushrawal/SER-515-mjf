@@ -4,8 +4,6 @@ const router = require("express").Router();
 
 const multer = require("multer");
 
-const path = require("path");
-
 const { v4: uuidv4 } = require("uuid");
 
 const DIR = "uploads";
@@ -39,6 +37,9 @@ module.exports = (app) => {
 
   // register a sponsor
   router.post("/add-sponsor", upload.single("sponsorImage"), sponsor.create);
+
+  // get sponsor list
+  router.get("/sponsor-list", sponsor.findAll);
 
   app.use("/api/sponsor", router);
 };

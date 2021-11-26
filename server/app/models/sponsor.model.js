@@ -5,6 +5,7 @@ module.exports = (mongoose) => {
       {
         _id: mongoose.Schema.Types.ObjectId,
         sponsorName: String,
+        sponsorType: String,
         sponsorImage: {
           type: String,
         },

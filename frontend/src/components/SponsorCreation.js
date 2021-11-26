@@ -26,6 +26,7 @@ const SponsorCreation = () => {
   const [imageName, setImageName] = useState("");
   const [data, setData] = useState({
     sponsorName: "",
+    sponsorType: "",
     sponsorImage: "",
   });
 
@@ -50,11 +51,13 @@ const SponsorCreation = () => {
     }
   };
 
+  // add a sponsor
   const addSponsor = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("sponsorImage", data.sponsorImage);
     formData.append("sponsorName", data.sponsorName);
+    formData.append("sponsorType", data.sponsorType);
 
     axios
       .post(url, formData, {
@@ -96,6 +99,7 @@ const SponsorCreation = () => {
 
     const obj = {
       sponsorName: "",
+      sponsorType: "",
       sponsorImage: "",
     };
 
@@ -168,6 +172,22 @@ const SponsorCreation = () => {
                           id="sponsorName"
                           onChange={handle}
                           value={data.sponsorName}
+                        />
+                      </InputGroup>
+                    </FormGroup>
+                    <FormGroup>
+                      <InputGroup className="input-group-alternative mb-3">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="fa fa-money"></i>
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input
+                          placeholder="Sponsor Type"
+                          type="text"
+                          id="sponsorType"
+                          onChange={handle}
+                          value={data.sponsorType}
                         />
                       </InputGroup>
                     </FormGroup>
