@@ -5,6 +5,7 @@ module.exports = (app) => {
 
   // register a user
   router.post("/registration", users.create);
+  router.post("/login", users.findOne);
 
   app.use("/api/users", router);
 };

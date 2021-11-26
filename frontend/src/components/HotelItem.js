@@ -29,7 +29,6 @@ const HotelItem = ({ item }) => {
 		setAlertStatus(alertStatus);
 		setAlertMessage(alertMessage);
 	};
-
 	const resetAlertMessage = () => {
 		setIsAlert(false);
 		setAlertColor("");
