@@ -27,6 +27,7 @@ import SponsorCreation from './components/SponsorCreation';
 import ManageHotel from './components/ManageHotel';
 import VolunteerAssign from './components/VolunteerAssign';
 import VolunteerList from './components/VolunteerList';
+import TeamApplications from './TeamApplications';
 
 function App() {
 	return (
@@ -99,14 +100,19 @@ function App() {
 						render={(props) => <RefereeDirectorLogin {...props} />}
 					/>
 					<Route
-						path="/Assign-Volunteer"
+						path="/assign-volunteer"
 						exact
 						render={(props) => <VolunteerAssign {...props} />}
 					/>
 					<Route
-						path="/List-Volunteer"
+						path="/list-volunteer"
 						exact
 						render={(props) => <VolunteerList {...props} />}
+					/>
+					<Route
+						path="/team-applications"
+						exact
+						render={(props) => <TeamApplications {...props} />}
 					/>
 				</Switch>
 			</BrowserRouter>

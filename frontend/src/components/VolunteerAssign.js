@@ -52,7 +52,7 @@ const VolunteerAssign = () => {
                 VolunteerId: item.VolunteerId,
                 VolunteerName: item.VolunteerName,
                 VolunteerEmail: item.VolunteerEmail,
-                VolunteerVenue: item.VolunteerVenue
+                VolunteerVenue: item.VolunteerVenue,
 
             },
             {
