@@ -89,7 +89,7 @@ const VolunteerAssign = () => {
     }
 
     return (
-        <section className="section section-lg section-shaped main-section">
+        <section className="section section-lg section-shaped ">
             <div>
                 {isAlert ? (
                     <Alerts
