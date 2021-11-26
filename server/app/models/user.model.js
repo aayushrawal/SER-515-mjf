@@ -8,6 +8,7 @@ module.exports = (mongoose) => {
         coachPhoneNumber: String,
         coachEmail: String,
         teamName: String,
+        teamStatus: String,
         teamCaptainName: String,
         teamPlayers: [
           {
