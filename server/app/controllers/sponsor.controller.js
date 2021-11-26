@@ -27,7 +27,8 @@ exports.create = (req, res, next) => {
   sponsor
     .save()
     .then((result) => {
-      res.status(201).json({
+      res.status(200).send({
+        status: "ok",
         message: "sponsor added successfully!",
         sponsorName: {
           _id: result._id,
@@ -39,6 +40,7 @@ exports.create = (req, res, next) => {
       console.log(err),
         res.status(500).send({
           message: err.message || "Unable to add sponsor. Some error occured.",
+          status: "fail",
         });
     });
 };

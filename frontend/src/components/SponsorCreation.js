@@ -1,5 +1,7 @@
 import "./SponsorCreation.scss";
 import React, { useState } from "react";
+import axios from "axios";
+import Alerts from "./Alerts";
 import {
   Button,
   Card,
@@ -16,6 +18,11 @@ import {
 } from "reactstrap";
 
 const SponsorCreation = () => {
+  const url = "/api/sponsor/add-sponsor";
+  const [isAlert, setIsAlert] = useState(false);
+  const [alertColor, setAlertColor] = useState("");
+  const [alertStatus, setAlertStatus] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
   const [imageName, setImageName] = useState("");
   const [data, setData] = useState({
     sponsorName: "",
@@ -30,20 +37,83 @@ const SponsorCreation = () => {
 
   const handleImage = (e) => {
     let image_as_files = e.target.files[0];
+    console.log(image_as_files);
 
-    setImageName(image_as_files.name);
+    if (image_as_files !== undefined) {
+      setImageName(image_as_files.name);
 
-    let newData = {
-      ...data,
-      sponsorImage: image_as_files,
-    };
-    setData(newData);
+      let newData = {
+        ...data,
+        sponsorImage: image_as_files,
+      };
+      setData(newData);
+    }
   };
 
   const addSponsor = (e) => {
     e.preventDefault();
-    console.log("data");
-    console.log(data);
+    const formData = new FormData();
+    formData.append("sponsorImage", data.sponsorImage);
+    formData.append("sponsorName", data.sponsorName);
+
+    axios
+      .post(url, formData, {
+        headers: {
+          Accept: "application/x-www-form-urlencoded",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          const createObj = {
+            alertColor: "success",
+            alertStatus: "Success!",
+            alertMessage: "Sponsor creation successful!",
+          };
+          createAlertMessage(createObj);
+          resetForm();
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        } else {
+          const createObj = {
+            alertColor: "danger",
+            alertStatus: "Failure!",
+            alertMessage: "Something went wrong!",
+          };
+          createAlertMessage(createObj);
+
+          setTimeout(() => {
+            resetAlertMessage();
+          }, 2500);
+        }
+      });
+  };
+
+  const resetForm = () => {
+    setImageName("");
+
+    const obj = {
+      sponsorName: "",
+      sponsorImage: "",
+    };
+
+    setData(obj);
+  };
+
+  const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
+    setIsAlert(true);
+    setAlertColor(alertColor);
+    setAlertStatus(alertStatus);
+    setAlertMessage(alertMessage);
+  };
+
+  const resetAlertMessage = () => {
+    setIsAlert(false);
+    setAlertColor("");
+    setAlertStatus("");
+    setAlertMessage("");
   };
 
   return (
@@ -57,6 +127,15 @@ const SponsorCreation = () => {
       </div>
       <section className=" bg-gradient-default">
         <Container className="pt-lg pb-300">
+          {isAlert ? (
+            <Alerts
+              color={alertColor}
+              status={alertStatus}
+              message={alertMessage}
+            />
+          ) : (
+            ""
+          )}
           <Row className="text-center justify-content-center">
             <Col lg="10">
               <h2 className="display-3 text-white">Add Tournament Sponsors</h2>
