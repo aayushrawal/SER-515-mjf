@@ -3,10 +3,10 @@ module.exports = (mongoose) => {
     "sponsor",
     mongoose.Schema(
       {
+        _id: mongoose.Schema.Types.ObjectId,
         sponsorName: String,
         sponsorImage: {
-          data: Buffer,
-          contentType: String,
+          type: String,
         },
       },
       { timestamps: true }
