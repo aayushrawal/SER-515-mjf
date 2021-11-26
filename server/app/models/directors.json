@@ -1,0 +1,21 @@
+{
+    
+    "users": [
+        {
+            "username": "referee-director",
+            "password": "HelloRef123"
+        },
+        {
+            "username": "volunteer-director",
+            "password": "HelloVol123"
+        },
+        {
+            "username": "team-director",
+            "password": "HelloTeam123"
+        },
+        {
+            "username": "tournament-director",
+            "password": "HelloTour123"
+        }
+    ]
+}
