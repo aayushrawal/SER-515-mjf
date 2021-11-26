@@ -58,3 +58,19 @@ exports.create = (req, res) => {
       });
     });
 };
+
+exports.findAll = (req, res) => {
+  Referee.find()
+    .then((data) => {
+      res.status(200).send({
+        message: "Referee list retrieved successfully!",
+        referees: data,
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving referees.",
+      });
+    });
+};
