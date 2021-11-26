@@ -1,21 +1,24 @@
 {
-    
-    "users": [
-        {
-            "username": "referee-director",
-            "password": "HelloRef123"
-        },
-        {
-            "username": "volunteer-director",
-            "password": "HelloVol123"
-        },
-        {
-            "username": "team-director",
-            "password": "HelloTeam123"
-        },
-        {
-            "username": "tournament-director",
-            "password": "HelloTour123"
-        }
-    ]
+  "users": [
+    {
+      "username": "referee-director",
+      "password": "HelloRef123",
+      "directorNumber": 1
+    },
+    {
+      "username": "volunteer-director",
+      "password": "HelloVol123",
+      "directorNumber": 2
+    },
+    {
+      "username": "team-director",
+      "password": "HelloTeam123",
+      "directorNumber": 3
+    },
+    {
+      "username": "tournament-director",
+      "password": "HelloTour123",
+      "directorNumber": 4
+    }
+  ]
 }
