@@ -37,6 +37,7 @@ require("./app/routes/hotel.routes")(app);
 require("./app/routes/sponsor.routes")(app);
 require("./app/routes/faq.director.routes")(app);
 require("./app/routes/hotel.director.routes")(app)
+require("./app/routes/volunteerlist.routes")(app)
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
