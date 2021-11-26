@@ -44,3 +44,19 @@ exports.create = (req, res, next) => {
         });
     });
 };
+
+exports.findAll = (req, res) => {
+  Sponsor.find()
+    .then((data) => {
+      res.status(200).send({
+        message: "Sponsor list retrieved successfully!",
+        sponsors: data,
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving sponsors.",
+      });
+    });
+};
