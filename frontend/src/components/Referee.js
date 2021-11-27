@@ -1,10 +1,9 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import axios from "axios";
-import Alerts from "./Alerts"
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown'
-
-
+import Alerts from "./Alerts";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import "./Referee.scss";
 
 import {
   Button,
@@ -22,11 +21,8 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
-import './Referee.scss'
-
 const Referee = () => {
-
-  const url = "/api/referee/registration"
+  const url = "/api/referee/registration";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
   const [alertStatus, setAlertStatus] = useState("");
@@ -36,24 +32,23 @@ const Referee = () => {
     refereeEmail: "",
     refereeUsername: "",
     refereePhonenumber: "",
-    refereeDob: Date,
+    refereeDob: "",
     refereeEventcategory: "",
-  })
+    refereeStatus: "not accepted",
+  });
 
   const resetForm = () => {
     const obj = {
+      ...data,
       refereeName: "",
       refereeEmail: "",
       refereeUsername: "",
       refereePhonenumber: "",
-      refereeDob: Date,
-      refereeEventcategory: ""
+      refereeDob: "",
+      refereeEventcategory: "",
     };
 
-    const newObj = {
-      ...obj,
-    };
-    setData(newObj);
+    setData(obj);
   };
 
   const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
@@ -79,7 +74,7 @@ const Referee = () => {
     const newdata = { ...data };
     newdata["refereeEventcategory"] = e;
     setData(newdata);
-  }
+  };
 
   const signup = (e) => {
     e.preventDefault();
@@ -93,6 +88,8 @@ const Referee = () => {
           refereePhonenumber: data.refereePhonenumber,
           refereeDob: data.refereeDob,
           refereeEventcategory: data.refereeEventcategory,
+          refereeStatus: data.refereeStatus,
+          matchAssign: "not assigned",
         },
         {
           headers: {
@@ -166,11 +163,13 @@ const Referee = () => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Name"
+                        <Input
+                          placeholder="Name"
                           type="text"
                           id="refereeName"
                           onChange={handle}
-                          value={data.refereeName} />
+                          value={data.refereeName}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -180,10 +179,13 @@ const Referee = () => {
                             <i className="ni ni-email-83" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Email" type="email"
+                        <Input
+                          placeholder="Email"
+                          type="email"
                           id="refereeEmail"
                           onChange={handle}
-                          value={data.refereeEmail} />
+                          value={data.refereeEmail}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -210,10 +212,13 @@ const Referee = () => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Phone Number" type="text"
+                        <Input
+                          placeholder="Phone Number"
+                          type="text"
                           id="refereePhonenumber"
                           onChange={handle}
-                          value={data.refereePhonenumber} />
+                          value={data.refereePhonenumber}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -223,10 +228,13 @@ const Referee = () => {
                             <i className="ni ni-hat-3" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Date of Birth" type="date"
+                        <Input
+                          placeholder="Date of Birth"
+                          type="date"
                           id="refereeDob"
                           onChange={handle}
-                          value={data.refereeDob} />
+                          value={data.refereeDob}
+                        />
                       </InputGroup>
                     </FormGroup>
                     <FormGroup>
@@ -235,29 +243,34 @@ const Referee = () => {
                         placement="right"
                         target="tooltip159654437"
                       >
-                        Selecting a category registers you for lower categories automatically
+                        Selecting a category registers you for lower categories
+                        automatically
                       </UncontrolledTooltip>
                       <DropdownButton
                         data-placement="right"
                         id="tooltip159654437"
-                        size="md" className="font-weight-700"
-                        alignRight
-                        title={data.refereeEventcategory === "" ? " Select Event" : data.refereeEventcategory}
-
+                        size="md"
+                        className="font-weight-700"
+                        title={
+                          data.refereeEventcategory === ""
+                            ? " Select Event"
+                            : data.refereeEventcategory
+                        }
                         onSelect={handleSelect}
                       >
-                        <Dropdown.Item eventKey="Category 1 - U8">Category 1 - U8</Dropdown.Item>
-                        <Dropdown.Item eventKey="Category 2 - U48">Category 2 - U48</Dropdown.Item>
-                        <Dropdown.Item eventKey="Category 3 - O48">Category 3 - O48</Dropdown.Item>
+                        <Dropdown.Item eventKey="Category 1 - U8">
+                          Category 1 - U8
+                        </Dropdown.Item>
+                        <Dropdown.Item eventKey="Category 2 - U48">
+                          Category 2 - U48
+                        </Dropdown.Item>
+                        <Dropdown.Item eventKey="Category 3 - O48">
+                          Category 3 - O48
+                        </Dropdown.Item>
                       </DropdownButton>
-
                     </FormGroup>
                     <div className="text-center">
-                      <Button
-                        className="mt-4"
-                        color="primary"
-                        type="submit"
-                      >
+                      <Button className="mt-4" color="primary" type="submit">
                         Create account
                       </Button>
                     </div>
@@ -282,7 +295,6 @@ const Referee = () => {
       </section>
     </>
   );
+};
 
-}
-
-export default Referee
+export default Referee;

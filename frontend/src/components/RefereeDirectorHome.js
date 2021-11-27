@@ -6,12 +6,6 @@ import { Button, NavbarBrand } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const RefereeDirectorHome = () => {
-  const RefereeSchedules = (e) => {
-    e.preventDefault();
-  };
-  const RefereeApplications = (e) => {
-    e.preventDefault();
-  };
   return (
     <section className="section section-lg section-shaped main-section">
       <div className="shape shape-style-1 bg-gradient-default">
@@ -31,29 +25,25 @@ const RefereeDirectorHome = () => {
             <br />
             <br />
             <div className="text-center">
-              <NavbarBrand to="/" tag={Link}>
-                <Button
-                  onClick={RefereeSchedules}
-                  className="mt-4 btn btn-default"
-                  color="info"
-                  type="submit"
-                >
-                  Manage Referee Schedules
-                </Button>
-              </NavbarBrand>
+              <Button
+                to="/referee-director/manage-schedules"
+                tag={Link}
+                className="mt-4 btn btn-default"
+                color="info"
+              >
+                Manage Referee Schedules
+              </Button>
             </div>
             <br />
             <div className="text-center">
-              <NavbarBrand to="/" tag={Link}>
-                <Button
-                  onClick={RefereeApplications}
-                  className="btn btn-default mt-4"
-                  color="info"
-                  type="submit"
-                >
-                  Manage Referee Applications
-                </Button>
-              </NavbarBrand>
+              <Button
+                to="/referee-director/applications"
+                className="btn btn-default mt-4"
+                color="info"
+                tag={Link}
+              >
+                Manage Referee Applications
+              </Button>
             </div>
           </div>
         </div>
@@ -61,5 +51,4 @@ const RefereeDirectorHome = () => {
     </section>
   );
 };
-
 export default RefereeDirectorHome;
