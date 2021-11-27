@@ -1,12 +1,10 @@
-import './ManageReferee.scss';
-import React, { useEffect, useState } from 'react'
-import RefereeItem from './RefereeItem';
+import "./ManageReferee.scss";
+import React, { useEffect, useState } from "react";
+import RefereeItem from "./RefereeItem";
 import axios from "axios";
 
 import Table from "react-bootstrap/Table";
-import {
-  Container, Col, Input, Button
-} from "reactstrap";
+import { Container, Col, Input, Button } from "reactstrap";
 
 const TableHeader = () => (
   <thead>
@@ -24,27 +22,27 @@ const TableHeader = () => (
 );
 
 const ManageReferee = () => {
-
-  const url = '/api/referee/referee-list';
+  const url = "/api/referee/referee-list";
   var newData = [];
-  const [refereeData, setData] = useState(newData)
+  const [refereeData, setData] = useState(newData);
   useEffect(() => {
     getAllReferee();
-
   }, []);
 
   const getAllReferee = () => {
-    axios.get(url, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    }).then(function (response) {
-      newData = response.data;
-      setData(newData);
-    })
-  }
-let counter = 0;
+    axios
+      .get(url, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then(function (response) {
+        newData = response.data.referees;
+        setData(newData);
+      });
+  };
+  let counter = 0;
   return (
     <div useRef="main">
       <div className="section section-shaped section-lg">
@@ -64,20 +62,15 @@ let counter = 0;
             <Table striped bordered hover>
               <TableHeader></TableHeader>
               <tbody>
-                {
-                  
-                  refereeData.map((item, index) => {
-                      counter = counter + 1;
-                      return (
-                        <tr>
-                        <td>{counter}</td>  
-                        <RefereeItem index={index}
-                        item={item}
-                        key={index}/>
-                        </tr>
-                      )
-                  })
-                }
+                {refereeData.map((item, index) => {
+                  counter = counter + 1;
+                  return (
+                    <tr>
+                      <td>{counter}</td>
+                      <RefereeItem index={index} item={item} key={index} />
+                    </tr>
+                  );
+                })}
               </tbody>
             </Table>
           </div>
@@ -91,15 +84,12 @@ let counter = 0;
             x="0"
             y="0"
           >
-            <polygon
-              className="fill-white"
-              points="2560 0 2560 100 0 100"
-            />
+            <polygon className="fill-white" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default ManageReferee;
