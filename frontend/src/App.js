@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import AboutUs from "./components/AboutUs";
 
+import AboutUs from "./components/AboutUs";
 import Login from "./components/Authentication/Login";
 import Registration from "./components/Authentication/Registration";
 import FAQ from "./components/FAQ";
@@ -25,6 +25,7 @@ import RefereeDirectorHome from "./components/RefereeDirectorHome";
 import VolunteerDirectorHome from "./components/VolunteerDirectorHome";
 import SponsorCreation from "./components/SponsorCreation";
 import ManageHotel from "./components/ManageHotel";
+import ManageReferee from './components/ManageReferee';
 import VolunteerAssign from "./components/VolunteerAssign";
 import VolunteerList from "./components/VolunteerList";
 import RefereeApplications from "./components/RefereeApplications";
@@ -162,6 +163,11 @@ function App() {
             path="/referee-director/login"
             exact
             render={(props) => <RefereeDirectorLogin {...props} />}
+          />
+          <Route
+						path="/referee-director/manage-schedules"
+						exact
+						render={(props) => <ManageReferee {...props} />}
           />
           <Route
             path="/Assign-Volunteer"

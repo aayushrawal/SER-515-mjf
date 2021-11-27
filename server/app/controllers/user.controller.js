@@ -74,20 +74,38 @@ exports.create = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
+  if (!req.body.username) {
+    res.status(400).send({ message: "username missing." });
+    return;
+  }
+
+  if (!req.body.password) {
+    res.status(400).send({ message: "password missing." });
+    return;
+  }
+
+  if (!req.body.directorNumber) {
+    res.status(400).send({ message: "director number missing." });
+    return;
+  }
+
   const username = req.body.username;
   const password = req.body.password;
+  const directorNumber = req.body.directorNumber;
 
   const directorList = directors.users;
 
-  const user = directorList.find((director) => director.username === username);
+  const user = directorList.find(
+    (director) => director.directorNumber === directorNumber
+  );
 
   if (!user) {
     res.send({
       status: "fail",
-      message: "Cannot find user with username: " + username,
+      message: "Cannot find that with director ",
     });
   } else {
-    if (user.password === password) {
+    if (user.password === password && user.username === username) {
       res.send({
         status: "ok",
         message: "successfully logged in!",

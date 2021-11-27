@@ -89,6 +89,7 @@ const Referee = () => {
           refereeDob: data.refereeDob,
           refereeEventcategory: data.refereeEventcategory,
           refereeStatus: data.refereeStatus,
+          matchAssign: "not assigned",
         },
         {
           headers: {

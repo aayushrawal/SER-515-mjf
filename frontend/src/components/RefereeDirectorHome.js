@@ -26,7 +26,7 @@ const RefereeDirectorHome = () => {
             <br />
             <div className="text-center">
               <Button
-                to="/"
+                to="/referee-director/manage-schedules"
                 tag={Link}
                 className="mt-4 btn btn-default"
                 color="info"
@@ -51,5 +51,4 @@ const RefereeDirectorHome = () => {
     </section>
   );
 };
-
 export default RefereeDirectorHome;

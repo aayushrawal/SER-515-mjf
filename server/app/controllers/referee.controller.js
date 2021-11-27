@@ -43,6 +43,7 @@ exports.create = (req, res) => {
     refereeDob: req.body.refereeDob,
     refereeEventcategory: req.body.refereeEventcategory,
     refereeStatus: req.body.refereeStatus,
+    matchAssign: req.body.matchAssign
   });
 
   // save referee to database
@@ -75,7 +76,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-exports.update = (req, res) => {
+exports.changeRefereeStatus = (req, res) => {
   if (!req.body.refereeName) {
     res.status(400).send({ message: "referee name missing." });
     return;
@@ -127,6 +128,27 @@ exports.update = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message: "Error updating referee with id=" + id,
+      });
+    });
+};
+
+exports.update = (req, res) => {
+  if (!req.body) {
+      return res.status(400).send({
+        message: "Data to update can not be empty!"
+      });
+    }
+  Referee.findByIdAndUpdate(req.params.id, req.body, { matchAssign: req.body.matchAssign })
+  .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update referee with id=${id}. Maybe referee was not found!`
+        });
+      } else res.send({ message: "Referee was updated successfully." });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating referee with id=" + id
       });
     });
 };
