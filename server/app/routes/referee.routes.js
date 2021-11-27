@@ -7,6 +7,8 @@ module.exports = (app) => {
   router.post("/registration", referee.create);
   // get all referees
   router.get("/referee-list", referee.findAll);
+  // update a referee
+  router.put("/update-status", referee.update);
 
   app.use("/api/referee", router);
 };

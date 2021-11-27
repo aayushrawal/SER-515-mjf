@@ -74,3 +74,59 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
+exports.update = (req, res) => {
+  if (!req.body.refereeName) {
+    res.status(400).send({ message: "referee name missing." });
+    return;
+  }
+
+  if (!req.body.refereeStatus) {
+    res.status(400).send({ message: "referee status missing." });
+    return;
+  }
+
+  if (!req.body.refereeEmail) {
+    res.status(400).send({ message: "referee email missing." });
+    return;
+  }
+
+  if (!req.body.refereeUsername) {
+    res.status(400).send({ message: "referee username missing." });
+    return;
+  }
+
+  if (!req.body.refereePhonenumber) {
+    res.status(400).send({ message: "referee phonenumber missing." });
+    return;
+  }
+
+  if (!req.body.refereeDob) {
+    res.status(400).send({ message: "referee DOB missing." });
+    return;
+  }
+
+  if (!req.body.refereeEventcategory) {
+    res.status(400).send({ message: "referee event category missing." });
+    return;
+  }
+
+  const id = req.body._id;
+
+  Referee.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update Referee with id=${id}. Maybe Referee was not found!`,
+        });
+      } else
+        res.send({
+          message: "Referee status was updated successfully.",
+        });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error updating referee with id=" + id,
+      });
+    });
+};
