@@ -6,5 +6,9 @@ module.exports = (app) => {
     // register a referee
     router.post("/registration", referee.create);
 
-     app.use("/api/referee", router);
+    router.get("/registration", referee.findAll);
+
+    router.put("/assign-referee/:id", referee.update);
+
+    app.use("/api/referee", router);
 };
