@@ -46,7 +46,7 @@ const ScheduleTeamMatches = () => {
         axios.post(posturl,
             {
                 teamName: item.teamName,
-                apponentTeam: item.apponentTeam,
+                opponentTeam: item.opponentTeam,
                 matchVenue: item.matchVenue,
                 teamCategory: item.teamCategory,
             },
@@ -115,7 +115,7 @@ const ScheduleTeamMatches = () => {
                         <thead className="TeamApplication">
                             <tr>
                                 <th scope="col"> Home Team Name</th>
-                                <th scope="col">Apponent Team Name</th>
+                                <th scope="col">Opponent Team Name</th>
                                 <th scope="col">Match Venue</th>
                                 <th scope="col">Category </th>
                                 <th scope="col">Assign Match</th>
@@ -128,11 +128,11 @@ const ScheduleTeamMatches = () => {
                                         <td>{item.teamName}</td>
                                         <td>
                                             <Input
-                                                placeholder="Apponent Team Name"
+                                                placeholder="Opponent Team Name"
                                                 type="text"
-                                                id="ApponentTeam"
-                                                value={item.apponentTeam}
-                                                onChange={(e) => handle(e, item, 'apponentTeam')}
+                                                id="OpponentTeam"
+                                                value={item.opponentTeam}
+                                                onChange={(e) => handle(e, item, 'opponentTeam')}
                                             />
                                         </td>
                                         <td>

@@ -13,10 +13,11 @@ const TeamApplications = () => {
     const [alertStatus, setAlertStatus] = useState("");
     const [alertMessage, setAlertMessage] = useState("");
 
+    
+
     const [teamdata, setteamdata] = useState({
         users: []
     });
-    const [disable, setDisable] = React.useState(false);
 
     const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
         setIsAlert(true);
@@ -44,7 +45,7 @@ const TeamApplications = () => {
             {
                 teamName: item.teamName,
                 coachName: item.coachFirstName + " " + item.coachLastName,
-                teamStatus: "Team Accepted",
+                teamStatus: "accepted",
             },
             {
                 headers: {
@@ -55,7 +56,9 @@ const TeamApplications = () => {
         )
             .then((res) => {
                 if (res.status == 200) {
-
+                    item.teamStatus="accepted";
+                    // item.acceptStatus = true
+                    // item.rejectStatus = true
                     const createObj = {
                         alertColor: "success",
                         alertStatus: "Success!",
@@ -96,7 +99,8 @@ const TeamApplications = () => {
         )
             .then((res) => {
                 if (res.status == 200) {
-
+                    item.teamStatus="not accepted";
+                    // item.rejectStatus = true
                     const createObj = {
                         alertColor: "danger",
                         alertStatus: "Rejected!",
@@ -162,13 +166,13 @@ const TeamApplications = () => {
                                         <td>{item.coachFirstName + " " + item.coachLastName}</td>
                                         <td>{item.teamStatus}</td>
                                         <td>
-                                            <Button className="mt-0"
+                                            <Button disabled={item.acceptStatus} className="mt-0"
                                                 color="success"
                                                 type="submit"
-                                                onClick={(item) => Accept(item)}>
+                                                onClick={() => Accept(item)}>
                                                 Accept
                                             </Button>
-                                            <Button className="mt-0"
+                                            <Button className="mt-0" disabled={item.rejectStatus}
                                                 color="danger"
                                                 type="submit"
                                                 onClick={() => Reject(item)}>

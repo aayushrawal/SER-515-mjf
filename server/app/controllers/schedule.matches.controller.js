@@ -9,7 +9,7 @@ exports.assign = (req, res) => {
         return;
     }
 
-    if (!req.body.apponentTeam) {
+    if (!req.body.opponentTeam) {
         res.status(400).send({ message: "Apponenet Team Name missing." });
         return;
     }
@@ -27,7 +27,7 @@ exports.assign = (req, res) => {
     // Accept/Reject Team Applications
     const AssignedMatches = new assignmatches({
         teamName: req.body.teamName,
-        apponentTeam: req.body.apponentTeam,
+        opponentTeam: req.body.opponentTeam,
         matchVenue: req.body.matchVenue,
         teamCategory: req.body.teamCategory,
     });

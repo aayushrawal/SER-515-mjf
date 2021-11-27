@@ -40,7 +40,7 @@ exports.acceptreject = (req, res) => {
 };
 
 exports.getaccept = (req, res) =>{
-    teamApplicaionsdata.find({teamStatus : "Team Accepted"})
+    teamApplicaionsdata.find({teamStatus : "accepted"})
     .then(data =>{
         res.send({
             message:"Retrieved Accepted Teams List",
