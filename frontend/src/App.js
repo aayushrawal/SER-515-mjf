@@ -98,7 +98,7 @@ function App() {
 						render={(props) => <RefereeDirectorLogin {...props} />}
 					/>
 					<Route
-						path="/tournament-director/manage-referee"
+						path="/referee-director/manage-schedules"
 						exact
 						render={(props) => <ManageReferee {...props} />}
 					/>

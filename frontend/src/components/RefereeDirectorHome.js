@@ -31,7 +31,7 @@ const RefereeDirectorHome = () => {
 						<br />
 						<br />
 						<div className="text-center">
-							<NavbarBrand to="/" tag={Link}>
+							<NavbarBrand to="/referee-director/manage-schedules" tag={Link}>
 								<Button
 									onclick={RefereeSchedules}
 									className="mt-4"

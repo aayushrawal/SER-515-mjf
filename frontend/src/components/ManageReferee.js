@@ -17,7 +17,8 @@ const TableHeader = () => (
     <th>Contact Number </th>
     <th>DOB</th>
     <th>Event Category</th>
-    <th>Assign Match</th>
+    <th>Match Assign</th>
+    <th>Re-Assign Match</th>
     <th></th>
   </thead>
 );
@@ -66,7 +67,6 @@ let counter = 0;
                 {
                   
                   refereeData.map((item, index) => {
-                    if(item.matchAssign == "Not Assigned"){
                       counter = counter + 1;
                       return (
                         <tr>
@@ -76,7 +76,6 @@ let counter = 0;
                         key={index}/>
                         </tr>
                       )
-                    }
                   })
                 }
               </tbody>

@@ -43,7 +43,7 @@ exports.create = (req, res) => {
         refereePhonenumber: req.body.refereePhonenumber,
         refereeDob: req.body.refereeDob,
         refereeEventcategory: req.body.refereeEventcategory,
-        matchAssign: "Not Assigned"
+        matchAssign: req.body.matchAssign
     });
 
     // save referee to database

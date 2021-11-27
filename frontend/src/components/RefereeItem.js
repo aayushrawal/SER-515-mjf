@@ -56,6 +56,7 @@ const RefereeItem = ({ item }) => {
                           <td>{item.refereePhonenumber}</td>
                           <td>{item.refereeDob}</td>
                           <td>{item.refereeEventcategory}</td>
+                          <td>{item.matchAssign}</td>
                           <td>
                             <Input
                               placeholder="Match Name"

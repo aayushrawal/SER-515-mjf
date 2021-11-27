@@ -77,23 +77,6 @@ const TournamentDirectorHome = () => {
                 </Button>
               </NavbarBrand>
             </div>
-            <div className="text-center">
-              <NavbarBrand
-                to="/tournament-director/manage-referee"
-                tag={Link}
-              >
-                <Button
-                  onclick={ManageReferee}
-                  className="mt-4"
-                  color="info"
-                  type="submit"
-                  class="btn btn-default"
-                >
-                  Refree Managment Page
-                </Button>
-              </NavbarBrand>
-            </div>
-          
           </div>
         </div>
       </div>
