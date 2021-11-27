@@ -29,6 +29,7 @@ const VolunteerDirectorLogin = (props) => {
   const [data, setData] = useState({
     username: "",
     password: "",
+	directorNumber : 2,
   });
 
   const handle = (e) => {
@@ -69,6 +70,7 @@ const VolunteerDirectorLogin = (props) => {
         {
           username: data.username,
           password: data.password,
+		  directorNumber: data.directorNumber,
         },
         {
           headers: {
