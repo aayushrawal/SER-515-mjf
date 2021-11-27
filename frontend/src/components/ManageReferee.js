@@ -25,7 +25,7 @@ const TableHeader = () => (
 
 const ManageReferee = () => {
 
-  const url = '/api/referee/registration';
+  const url = '/api/referee/referee-list';
   var newData = [];
   const [refereeData, setData] = useState(newData)
   useEffect(() => {
