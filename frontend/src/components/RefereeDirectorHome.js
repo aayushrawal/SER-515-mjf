@@ -1,9 +1,9 @@
-import React from 'react';
-import './RefereeDirectorHome.scss';
+import React from "react";
+import "./RefereeDirectorHome.scss";
 
-import { Button, NavbarBrand } from 'reactstrap';
+import { Button, NavbarBrand } from "reactstrap";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const RefereeDirectorHome = () => {
 	const RefereeSchedules = (e) => {
@@ -63,5 +63,4 @@ const RefereeDirectorHome = () => {
 		</section>
 	);
 };
-
 export default RefereeDirectorHome;

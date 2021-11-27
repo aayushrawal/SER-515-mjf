@@ -26,6 +26,8 @@ import VolunteerDirectorHome from './components/VolunteerDirectorHome';
 import SponsorCreation from './components/SponsorCreation';
 import ManageHotel from './components/ManageHotel';
 import ManageReferee from './components/ManageReferee';
+import VolunteerAssign from './components/VolunteerAssign';
+import VolunteerList from './components/VolunteerList';
 
 function App() {
 	return (
@@ -101,6 +103,16 @@ function App() {
 						path="/referee-director/manage-schedules"
 						exact
 						render={(props) => <ManageReferee {...props} />}
+          />
+          <Route
+						path="/Assign-Volunteer"
+						exact
+						render={(props) => <VolunteerAssign {...props} />}
+					/>
+					<Route
+						path="/List-Volunteer"
+						exact
+						render={(props) => <VolunteerList {...props} />}
 					/>
 				</Switch>
 			</BrowserRouter>

@@ -13,6 +13,8 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/uploads", express.static("uploads"));
+
 const db = require("./app/models");
 db.mongoose
   .connect(db.url, {
@@ -37,6 +39,7 @@ require("./app/routes/hotel.routes")(app);
 require("./app/routes/sponsor.routes")(app);
 require("./app/routes/faq.director.routes")(app);
 require("./app/routes/hotel.director.routes")(app)
+require("./app/routes/volunteerlist.routes")(app)
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
