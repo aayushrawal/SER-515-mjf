@@ -31,9 +31,7 @@ const VolunteerAssign = () => {
 
 
     const handle = (e, item) => {
-        // const newdata = { ...VAdata };
         item.VolunteerVenue = e.target.value;
-        // setVAdata(newdata)
     }
 
 
@@ -139,7 +137,7 @@ const VolunteerAssign = () => {
                                             />
                                         </td>
                                         <td>
-                                            <Button className="mt-4"
+                                            <Button className="mt-0"
                                                 color="warning"
                                                 type="submit"
                                                 onClick={() => Submit(item)}>

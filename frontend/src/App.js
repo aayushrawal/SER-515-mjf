@@ -27,7 +27,8 @@ import SponsorCreation from './components/SponsorCreation';
 import ManageHotel from './components/ManageHotel';
 import VolunteerAssign from './components/VolunteerAssign';
 import VolunteerList from './components/VolunteerList';
-import TeamApplications from './TeamApplications';
+import TeamApplications from './components/TeamApplications';
+import ScheduleTeamMatches from './components/ScheduleTeamMatches';
 
 function App() {
 	return (
@@ -113,6 +114,11 @@ function App() {
 						path="/team-applications"
 						exact
 						render={(props) => <TeamApplications {...props} />}
+					/>
+					<Route
+						path="/schedule-matches"
+						exact
+						render={(props) => <ScheduleTeamMatches {...props} />}
 					/>
 				</Switch>
 			</BrowserRouter>

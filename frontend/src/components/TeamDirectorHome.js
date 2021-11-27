@@ -40,7 +40,7 @@ const TeamDirectorHome = () => {
                             </NavbarBrand>
                         </div>
                         <div className="text-center">
-                            <NavbarBrand to="/" tag={Link}>
+                            <NavbarBrand to="/schedule-matches" tag={Link}>
                                 <Button onclick={ScheduleMatches}
                                     className="mt-4"
                                     color="info"

@@ -1,8 +1,7 @@
 const db = require("../models")
 const teamApplicaionsdata = db.TeamApplications
-// const teamApplications = require("../models/team.applications.model")
 
-// Appcept the Team Applications
+// Accept the Team Applications
 exports.acceptreject = (req, res) => {
     // Validate request for correct input data
     if (!req.body.teamName) {
@@ -39,3 +38,19 @@ exports.acceptreject = (req, res) => {
             });
         });
 };
+
+exports.getaccept = (req, res) =>{
+    teamApplicaionsdata.find({teamStatus : "Team Accepted"})
+    .then(data =>{
+        res.send({
+            message:"Retrieved Accepted Teams List",
+            acceptedTeams:data,
+        })
+    })
+    .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving Coaches."
+        });
+    });
+}

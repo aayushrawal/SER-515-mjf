@@ -14,5 +14,6 @@ db.faqs = require("./faq.director.model.js")(mongoose);
 db.hoteldirector = require("./hotel.director.model.js")(mongoose);
 db.Volunteers = require("./volunteer.list.model")(mongoose);
 db.TeamApplications = require("./team.applications.model")(mongoose);
+db.AssignedMatches = require("./schedule.matches.model")(mongoose);
 
 module.exports = db;

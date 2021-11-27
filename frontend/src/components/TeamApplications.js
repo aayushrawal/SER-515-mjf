@@ -1,15 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import "./TeamApplications.scss";
-import { Input, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import axios from 'axios';
+import Alerts from "../components/Alerts";
 
 const TeamApplications = () => {
     const geturl = "/api/users/team-list"
     const postacceptrejecturl = "/api/team-applications/accept-reject"
 
+    const [isAlert, setIsAlert] = useState(false);
+    const [alertColor, setAlertColor] = useState("");
+    const [alertStatus, setAlertStatus] = useState("");
+    const [alertMessage, setAlertMessage] = useState("");
+
     const [teamdata, setteamdata] = useState({
         users: []
     });
+    const [disable, setDisable] = React.useState(false);
+
+    const createAlertMessage = ({ alertColor, alertStatus, alertMessage }) => {
+        setIsAlert(true);
+        setAlertColor(alertColor);
+        setAlertStatus(alertStatus);
+        setAlertMessage(alertMessage);
+    };
+    const resetAlertMessage = () => {
+        setIsAlert(false);
+        setAlertColor("");
+        setAlertStatus("");
+        setAlertMessage("");
+    };
 
     const getuserdata = () => {
         axios.get(geturl).then((res) => {
@@ -18,13 +38,6 @@ const TeamApplications = () => {
         })
     }
     useEffect(() => getuserdata(), [])
-
-    const handle = (e, item) => {
-        item.teamCategory = e.target.value;
-        // item.Match = e.target.value;
-        // item.MatchVenue = e.target.value;
-
-    }
 
     const Accept = (item) => {
         axios.post(postacceptrejecturl,
@@ -40,15 +53,31 @@ const TeamApplications = () => {
                 },
             }
         )
-        .then((res) => {
-            if (res.status == 200) {
-                
-               alert("done")
-            }
-            else {
-                alert("unsuccessful")
-            }
-        })
+            .then((res) => {
+                if (res.status == 200) {
+
+                    const createObj = {
+                        alertColor: "success",
+                        alertStatus: "Success!",
+                        alertMessage: "Team Accepted for Tournament",
+                    }
+                    createAlertMessage(createObj);
+                    setTimeout(() => {
+                        resetAlertMessage();
+                    }, 2500);
+                }
+                else {
+                    const createObj = {
+                        alertColor: "danger",
+                        alertStatus: "Failure!",
+                        alertMessage: "Something went wrong!",
+                    };
+                    createAlertMessage(createObj);
+                    setTimeout(() => {
+                        resetAlertMessage();
+                    }, 2500);
+                }
+            })
     }
 
     const Reject = (item) => {
@@ -65,104 +94,94 @@ const TeamApplications = () => {
                 },
             }
         )
-        .then((res) => {
-            if (res.status == 200) {
-                
-               alert("done")
-            }
-            else {
-                alert("unsuccessful")
-            }
-        })
+            .then((res) => {
+                if (res.status == 200) {
+
+                    const createObj = {
+                        alertColor: "danger",
+                        alertStatus: "Rejected!",
+                        alertMessage: "Team has been Rejected for the Tournament",
+                    }
+                    createAlertMessage(createObj);
+                    setTimeout(() => {
+                        resetAlertMessage();
+                    }, 2500);
+                }
+                else {
+                    const createObj = {
+                        alertColor: "danger",
+                        alertStatus: "Failure!",
+                        alertMessage: "Something went wrong!",
+                    };
+                    createAlertMessage(createObj);
+                    setTimeout(() => {
+                        resetAlertMessage();
+                    }, 2500);
+                }
+            })
     }
 
     return (
         <section className="section section-lg section-shaped ">
-            <div className="shape shape-style-1 bg-gradient-default">
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-            </div>
             <div>
-                <table className="table" >
-                    <thead className="TeamApplication">
-                        <tr>
-                            <th scope="col"> Team Name</th>
-                            <th scope="col">Coach Name</th>
-                            <th scope="col">Team Status</th>
-                            {/* <th scope="col">Match</th>
-                        <th scope="col">Match venue</th> */}
-                            <th scope="col">Accept/Reject</th>
-                        </tr>
-                    </thead>
-                    <tbody className="TeamApplication">
-                        {teamdata.users.map(item => {
-                            return (
-                                <tr>
-                                    <td>{item.teamName}</td>
-                                    <td>{item.coachFirstName + " " + item.coachLastName}</td>
-                                    <td>{item.teamStatus}</td>
-                                    {/* <td>
-                                        <Input
-                                            placeholder="Team category"
-                                            type="text"
-                                            id="TeamCategory"
-                                            value={item.TeamCategory}
-                                            onChange={(e) => handle(e, item)}
-                                        />
-                                    </td> */}
-                                    {/* <td>
-                                        <select name="Category" id="teamCategory" value={item.teamCategory}
-                                            onChange={(e) => handle(e, item)}>
-                                            <option value="Category 1 - U8">Category 1 - U8</option>
-                                            <option value="Category 2 - U48">Category 2 - U48</option>
-                                            <option value="Category 3 - O48">Category 3 - O48</option>
-                                        </select>
-                                    </td> */}
-                                    {/* <td>
-                                            <Input
-                                                placeholder="Match"
-                                                type="text"
-                                                id="Match"
-                                                value={item.Match}
-                                                onChange={(e) => handle(e, item)}
-                                            />
-                                        </td>
+                {isAlert ? (
+                    <Alerts
+                        color={alertColor}
+                        status={alertStatus}
+                        message={alertMessage}
+                    />
+                ) : (
+                    ""
+                )}
+                <div className="shape shape-style-1 bg-gradient-default">
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                </div>
+                <div>
+                    <table className="table" >
+                        <thead className="TeamApplication">
+                            <tr>
+                                <th scope="col"> Team Name</th>
+                                <th scope="col">Coach Name</th>
+                                <th scope="col">Team Status</th>
+                                <th scope="col">Accept/Reject</th>
+                            </tr>
+                        </thead>
+                        <tbody className="TeamApplication">
+                            {teamdata.users.map(item => {
+                                return (
+                                    <tr>
+                                        <td>{item.teamName}</td>
+                                        <td>{item.coachFirstName + " " + item.coachLastName}</td>
+                                        <td>{item.teamStatus}</td>
                                         <td>
-                                            <Input
-                                                placeholder="Venue Name"
-                                                type="text"
-                                                id="MatchVenue"
-                                                value={item.MatchVenue}
-                                                onChange={(e) => handle(e, item)}
-                                            />
-                                        </td> */}
-                                    <td>
-                                        <Button className="mt-4"
-                                            color="warning"
-                                            type="submit"
-                                            onClick={() => Accept(item) }>
-                                            Accept
-                                        </Button>
-                                        <Button className="mt-4"
-                                            color="warning"
-                                            type="submit"
-                                            onClick={() => Reject(item)}>
-                                            Reject
-                                        </Button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
-                )
+                                            <Button className="mt-0"
+                                                color="success"
+                                                type="submit"
+                                                onClick={(item) => Accept(item)}>
+                                                Accept
+                                            </Button>
+                                            <Button className="mt-0"
+                                                color="danger"
+                                                type="submit"
+                                                onClick={() => Reject(item)}>
+                                                Reject
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                    )
+                </div>
             </div>
         </section>
     )

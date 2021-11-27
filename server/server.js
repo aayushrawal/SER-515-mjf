@@ -41,6 +41,7 @@ require("./app/routes/faq.director.routes")(app);
 require("./app/routes/hotel.director.routes")(app);
 require("./app/routes/volunteerlist.routes")(app);
 require("./app/routes/team.application.routes")(app);
+require("./app/routes/schedule.matches.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
