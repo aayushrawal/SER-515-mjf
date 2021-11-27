@@ -35,6 +35,7 @@ const Registration = () => {
     coachPhoneNumber: "",
     coachEmail: "",
     teamName: "",
+    teamStatus:"not accepted",
     teamCaptainName: "",
     teamPlayers: playerFields,
   });
@@ -68,6 +69,7 @@ const Registration = () => {
       coachPhoneNumber: "",
       coachEmail: "",
       teamName: "",
+      teamStatus:"not accepted",
       teamCaptainName: "",
     };
 
@@ -121,6 +123,7 @@ const Registration = () => {
           coachPhoneNumber: data.coachPhoneNumber,
           coachEmail: data.coachEmail,
           teamName: data.teamName,
+          teamStatus:data.teamStatus,
           teamCaptainName: data.teamCaptainName,
           teamPlayers: data.teamPlayers,
         },

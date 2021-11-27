@@ -56,6 +56,7 @@ exports.create = (req, res) => {
     coachPhoneNumber: req.body.coachPhoneNumber,
     coachEmail: req.body.coachEmail,
     teamName: req.body.teamName,
+    teamStatus:req.body.teamStatus,
     teamCaptainName: req.body.teamCaptainName,
     teamPlayers: req.body.teamPlayers,
   });
@@ -115,4 +116,20 @@ exports.findOne = (req, res) => {
       res.send({ status: "fail", message: "password is wrong!" });
     }
   }
+};
+
+exports.findAll = (req, res) => {
+  User.find()
+    .then((data) => {
+      res.status(200).send({
+        message: "Teams list retrieved successfully!",
+        users: data,
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Teams.",
+      });
+    });
 };

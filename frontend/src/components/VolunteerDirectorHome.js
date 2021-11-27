@@ -29,7 +29,7 @@ const VolunteerDirectorHome = () => {
                 <div className="volunteerdirectorhome-Body">
                     <div className="col-12">
                         <div className="text-center">
-                            <NavbarBrand to="/Assign-Volunteer" tag={Link}>
+                            <NavbarBrand to="/assign-volunteer" tag={Link}>
                                 <Button onclick={AssignVolunteer}
                                     className="mt-4"
                                     color="info"
@@ -40,7 +40,7 @@ const VolunteerDirectorHome = () => {
                             </NavbarBrand>
                         </div>
                         <div className="text-center mx-auto d-block">
-                            <NavbarBrand to="/List-Volunteer" tag={Link}>
+                            <NavbarBrand to="/list-volunteer" tag={Link}>
                                 <Button onclick={ListVolunteer}
                                     className="mt-4"
                                     color="info"

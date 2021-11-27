@@ -29,7 +29,7 @@ const TeamDirectorHome = () => {
                 <div className="tournamentdirectorhome-Body">
                     <div className="col-12">
                         <div className="text-center">
-                            <NavbarBrand to="/tournament-director/faq-creation" tag={Link}>
+                            <NavbarBrand to="/team-applications" tag={Link}>
                                 <Button onclick={AcceptApplications}
                                     className="mt-4"
                                     color="info"
@@ -40,7 +40,7 @@ const TeamDirectorHome = () => {
                             </NavbarBrand>
                         </div>
                         <div className="text-center">
-                            <NavbarBrand to="/" tag={Link}>
+                            <NavbarBrand to="/schedule-matches" tag={Link}>
                                 <Button onclick={ScheduleMatches}
                                     className="mt-4"
                                     color="info"
