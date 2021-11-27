@@ -1,65 +1,33 @@
 import './ManageReferee.scss';
 import React, { useEffect, useState } from 'react'
-import Alerts from './Alerts';
+import RefereeItem from './RefereeItem';
 import axios from "axios";
 
 import Table from "react-bootstrap/Table";
-import { Container, Col, Input, Button
-  } from "reactstrap";
-  
-  const TableHeader = () => (
-    <thead>
-      <th>#</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Username</th>
-      <th>Contact Number </th>
-      <th>DOB</th>
-      <th>Event Category</th>
-      <th>Assign Match</th>
-      <th></th>
-    </thead>
-  );
-  
+import {
+  Container, Col, Input, Button
+} from "reactstrap";
+
+const TableHeader = () => (
+  <thead>
+    <th>#</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Username</th>
+    <th>Contact Number </th>
+    <th>DOB</th>
+    <th>Event Category</th>
+    <th>Assign Match</th>
+    <th></th>
+  </thead>
+);
+
 const ManageReferee = () => {
-	// const url = "/api/faq/faq-director";
 
-    // const [data, setData] = useState({
-    //     refereeName: "",
-    //     refereeEmail: "",
-    //     refereeUsername: "",
-    //     refereePhonenumber: "",
-    //     refereeDob: "",
-    //     refereeEventcategory: "",
-            
-    //   });
-
-    // const submit = (e) => {
-    // e.preventDefault();
-
-    // axios
-    //   .post(
-    //     url,
-    //     {
-    //       refereeName: data.refereeName,
-    //       refereeEmail: data.refereeEmail,
-    //       refereeUsername: data.refereeUsername,
-    //       refereePhonenumber: data.refereePhonenumber,
-    //       refereeDob: data.refereeDob,
-    //       refereeEventcategory: data.refereeEventcategory,
-    //     },
-    //     {
-    //       headers: {
-    //         Accept: "application/json",
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   )
-    // };
-    const url = '/api/referee/registration';
-    var newData = [];
-   const [refereeData, setData] = useState(newData)
-   useEffect(() => {
+  const url = '/api/referee/registration';
+  var newData = [];
+  const [refereeData, setData] = useState(newData)
+  useEffect(() => {
     getAllReferee();
 
   }, []);
@@ -75,8 +43,9 @@ const ManageReferee = () => {
       setData(newData);
     })
   }
-	return (
-		<div useRef="main">
+let counter = 0;
+  return (
+    <div useRef="main">
       <div className="section section-shaped section-lg">
         <div className="shape shape-style-1 bg-gradient-default">
           <span />
@@ -95,31 +64,20 @@ const ManageReferee = () => {
               <TableHeader></TableHeader>
               <tbody>
                 {
-                    refereeData.map((referee, index) =>{
-                      if(referee.matchAssign == "Not Assigned")
-                        return(
+                  
+                  refereeData.map((item, index) => {
+                    if(item.matchAssign == "Not Assigned"){
+                      counter = counter + 1;
+                      return (
                         <tr>
-                            <td>{index + 1}</td>
-                            <td>{referee.refereeName}</td>
-                            <td>{referee.refereeEmail}</td>
-                            <td>{referee.refereeUsername}</td>
-                            <td>{referee.refereePhonenumber}</td>
-                            <td>{referee.refereeDob}</td>
-                            <td>{referee.refereeEventcategory}</td>
-                            <td>
-                                <Input
-                                placeholder="Match Name"
-                                type="text"
-                                id="matchName"/>
-                            </td>
-                            <td>
-                                <Button className="mt-4" color="warning" type="submit">
-						        Submit
-					           </Button>
-                            </td>
-                          </tr>
-                          )
-                    })
+                        <td>{counter}</td>  
+                        <RefereeItem index={index}
+                        item={item}
+                        key={index}/>
+                        </tr>
+                      )
+                    }
+                  })
                 }
               </tbody>
             </Table>
@@ -142,7 +100,7 @@ const ManageReferee = () => {
         </div>
       </div>
     </div>
-);
+  );
 }
 
 export default ManageReferee;
