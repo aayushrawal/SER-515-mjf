@@ -109,6 +109,7 @@ const RefereeApplications = () => {
         if (ref._id === referee._id) {
           email = referee.refereeEmail;
         }
+        return email;
       });
       axios
       .post(

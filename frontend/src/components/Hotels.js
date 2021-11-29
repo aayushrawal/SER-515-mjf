@@ -17,10 +17,6 @@ import {
   Col,
 } from "reactstrap";
 
-const SubmitForm = (e) => {
-  e.preventDefault();
-};
-
 const Hotels = (props) => {
 
   const url = "/api/hotels/booking";
@@ -145,7 +141,7 @@ const Hotels = (props) => {
                 acceptance of the tournament.
               </p>
               <div className="text-center">
-                <a target="_blank" href="https://www.hotels.com/">
+                <a target="_blank" href="https://www.hotels.com/" rel="noopener noreferrer">
                   <Button
                     onclick="('window.location.href)"
                     className="mt-4"

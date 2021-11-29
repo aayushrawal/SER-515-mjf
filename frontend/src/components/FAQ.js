@@ -9,11 +9,7 @@ const FAQ = () => {
 
   const url = '/api/faq/faq-director';
   var newData = [];
-  const [faqData, setData] = useState(newData)
-  useEffect(() => {
-    getAllFaqs();
-
-  }, []);
+  
 
   const getAllFaqs = () => {
     axios.get(url, {
@@ -26,6 +22,12 @@ const FAQ = () => {
       setData(newData);
     })
   }
+
+  const [faqData, setData] = useState(newData)
+  useEffect(() => {
+    getAllFaqs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // const DisplayFaq = () => (
   // <>

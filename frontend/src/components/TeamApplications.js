@@ -56,7 +56,7 @@ const TeamApplications = () => {
             }
         )
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     item.teamStatus="accepted";
                     // item.acceptStatus = true
                     // item.rejectStatus = true
@@ -110,7 +110,7 @@ const TeamApplications = () => {
             }
         )
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     item.teamStatus="not accepted";
                     // item.rejectStatus = true
                     const createObj = {

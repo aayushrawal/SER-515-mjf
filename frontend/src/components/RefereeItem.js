@@ -1,26 +1,11 @@
 import './RefereeItem.scss';
-import React, { useEffect, useState } from 'react'
-import Alerts from './Alerts';
+import React, { useState } from 'react'
 import axios from "axios";
 
-import Table from "react-bootstrap/Table";
 import {
-  Container, Col, Input, Button
+  Input, Button
 } from "reactstrap";
 
-const TableHeader = () => (
-  <thead>
-    <th>#</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Username</th>
-    <th>Contact Number </th>
-    <th>DOB</th>
-    <th>Event Category</th>
-    <th>Assign Match</th>
-    <th></th>
-  </thead>
-);
 
 const RefereeItem = ({ item }) => {
 
@@ -47,7 +32,6 @@ const RefereeItem = ({ item }) => {
       )
       window.location.reload(false);
   };
-  let counter = 0;
   return (
     <>
                           <td>{item.refereeName}</td>

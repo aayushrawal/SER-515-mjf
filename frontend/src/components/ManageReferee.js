@@ -4,7 +4,7 @@ import RefereeItem from "./RefereeItem";
 import axios from "axios";
 
 import Table from "react-bootstrap/Table";
-import { Container, Col, Input, Button } from "reactstrap";
+import { Container, Col } from "reactstrap";
 
 const TableHeader = () => (
   <thead>
@@ -27,6 +27,7 @@ const ManageReferee = () => {
   const [refereeData, setData] = useState(newData);
   useEffect(() => {
     getAllReferee();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getAllReferee = () => {

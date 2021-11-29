@@ -60,9 +60,9 @@ const ScheduleTeamMatches = () => {
             }
         )
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
 
-                    if (res.status == 200) {
+                    if (res.status === 200) {
 
                         const createObj = {
                             alertColor: "success",

@@ -10,16 +10,17 @@ const ManageHotel = () => {
 
 	const url = '/api/hotels/booking';
 
-	useEffect(() => {
-		getAllCoach();
-	}, []);
-
 	const getAllCoach = () => {
 		axios.get(url).then(function(response) {
 			newData = response.data;
 			setData(newData);
 		});
 	};
+
+	useEffect(() => {
+		getAllCoach();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<section className="section section-lg section-shaped main-section">

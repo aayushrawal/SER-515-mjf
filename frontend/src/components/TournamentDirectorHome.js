@@ -11,11 +11,7 @@ const TournamentDirectorHome = () => {
   };
   const ManageHotel = (e) => {
     e.preventDefault();
-  };
-  const ManageReferee = (e) => {
-    e.preventDefault();
-  };
-  
+  };  
   const ManageSponsors = (e) => {
     e.preventDefault();
   };

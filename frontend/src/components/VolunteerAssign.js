@@ -61,7 +61,7 @@ const VolunteerAssign = () => {
             }
         )
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     const createObj = {
                         alertColor: "success",
                         alertStatus: "Success!",
