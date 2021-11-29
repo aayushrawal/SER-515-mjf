@@ -24,6 +24,7 @@ exports.acceptreject = (req, res) => {
         teamName: req.body.teamName,
         coachName: req.body.coachName,
         teamStatus: req.body.teamStatus,
+        coachEmail: req.body.coachEmail
     });
 
     // save action(Accept/Reject) to database

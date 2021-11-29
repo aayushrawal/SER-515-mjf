@@ -8,6 +8,7 @@ const ScheduleTeamMatches = () => {
 
     const geturl = "/api/team-applications/accepted-applications"
     const posturl = "/api/team-applications/assign-matches"
+    const emailurl = "/sendemail2/"
 
     const [acceptteams, setacceptteams] = useState([])
 
@@ -46,6 +47,7 @@ const ScheduleTeamMatches = () => {
         axios.post(posturl,
             {
                 teamName: item.teamName,
+                coachEmail: item.coachEmail,
                 opponentTeam: item.opponentTeam,
                 matchVenue: item.matchVenue,
                 teamCategory: item.teamCategory,
@@ -85,6 +87,16 @@ const ScheduleTeamMatches = () => {
                     }
                 }
             })
+            axios
+            .post(
+              emailurl+item.coachEmail,
+              {
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+              }
+            )
     }
 
     return (
