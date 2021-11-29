@@ -27,6 +27,7 @@ exports.assign = (req, res) => {
     // Accept/Reject Team Applications
     const AssignedMatches = new assignmatches({
         teamName: req.body.teamName,
+        coachEmail: req.body.coachEmail,
         opponentTeam: req.body.opponentTeam,
         matchVenue: req.body.matchVenue,
         teamCategory: req.body.teamCategory,

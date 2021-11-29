@@ -5,6 +5,7 @@ module.exports = (mongoose) => {
       mongoose.Schema(
        {
         teamName: String,
+        coachEmail: String,
         opponentTeam: String,
         matchVenue:String,
         teamCategory:String,
