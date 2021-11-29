@@ -7,6 +7,7 @@ import Alerts from "./Alerts";
 const RefereeApplications = () => {
   const url = "/api/referee/referee-list";
   const url1 = "/api/referee/update-status";
+  const url2 = "/sendemail/";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
   const [alertStatus, setAlertStatus] = useState("");
@@ -103,6 +104,26 @@ const RefereeApplications = () => {
           }, 2500);
         }
       });
+      var email;
+      refereeList.map((ref) => {
+        if (ref._id === referee._id) {
+          email = referee.refereeEmail;
+        }
+      });
+      axios
+      .post(
+        url2+email,
+        {
+          ...referee,
+          refereeStatus: val,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
   };
 
   return (
