@@ -7,6 +7,7 @@ module.exports = (mongoose) => {
         teamName: String,
         coachName: String,
         teamStatus:String,
+        coachEmail:String
        },
        { timestamps: true }
      )
