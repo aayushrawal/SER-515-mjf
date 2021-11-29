@@ -51,7 +51,7 @@ app.post("/sendemail/:email", (req, res, next) => {
     auth: {
       user: `${user}`,
       pass: `${pass}`,
-  });
+  }});
 
   const mailOptions = {
     from: "foundationsofse@gmail.com",
