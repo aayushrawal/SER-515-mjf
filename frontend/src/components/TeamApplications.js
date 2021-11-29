@@ -166,13 +166,13 @@ const TeamApplications = () => {
                                         <td>{item.coachFirstName + " " + item.coachLastName}</td>
                                         <td>{item.teamStatus}</td>
                                         <td>
-                                            <Button disabled={item.acceptStatus} className="mt-0"
+                                            <Button  className="mt-0"
                                                 color="success"
                                                 type="submit"
                                                 onClick={() => Accept(item)}>
                                                 Accept
                                             </Button>
-                                            <Button className="mt-0" disabled={item.rejectStatus}
+                                            <Button className="mt-0" 
                                                 color="danger"
                                                 type="submit"
                                                 onClick={() => Reject(item)}>
