@@ -7,6 +7,7 @@ import Alerts from "../components/Alerts";
 const TeamApplications = () => {
     const geturl = "/api/users/team-list"
     const postacceptrejecturl = "/api/team-applications/accept-reject"
+    const emailurl = "/sendemail/"
 
     const [isAlert, setIsAlert] = useState(false);
     const [alertColor, setAlertColor] = useState("");
@@ -81,7 +82,18 @@ const TeamApplications = () => {
                     }, 2500);
                 }
             })
+            axios
+            .post(
+              emailurl+item.coachEmail,
+              {
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+              }
+            )
     }
+    
 
     const Reject = (item) => {
         axios.post(postacceptrejecturl,
@@ -123,6 +135,17 @@ const TeamApplications = () => {
                     }, 2500);
                 }
             })
+            axios
+            .post(
+              emailurl+item.coachEmail,
+              {
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+              }
+            )
+            
     }
 
     return (
