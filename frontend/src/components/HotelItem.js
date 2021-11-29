@@ -8,6 +8,8 @@ import Alerts from "../components/Alerts";
 const HotelItem = ({ item }) => {
 
 	const url = "/api/hotels/hotel-director";
+	const emailurl = "/sendemail3/";
+
 	const [isAlert, setIsAlert] = useState(false);
 	const [alertColor, setAlertColor] = useState("");
 	const [alertStatus, setAlertStatus] = useState("");
@@ -93,6 +95,16 @@ const HotelItem = ({ item }) => {
 				}
 
 			})
+      axios
+      .post(
+        emailurl+item.coachEmail,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
 	};
 
 	return (
@@ -102,7 +114,7 @@ const HotelItem = ({ item }) => {
               color={alertColor}
               status={alertStatus}
               message={alertMessage}
-            />
+            /> 
           ) : (
             ""
           )}

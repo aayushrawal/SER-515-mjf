@@ -72,6 +72,33 @@ app.post("/sendemail/:email", (req, res, next) => {
   });
 });
 
+app.post("/sendemail3/:email", (req, res, next) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: `${user}`,
+      pass: `${pass}`,
+  }});
+
+  const mailOptions3 = {
+    from: "foundationsofse@gmail.com",
+    to: req.params.email ,
+    subject: `Application Status`,
+    html: `<p>There has been a change in your hotel booking request status. Please login to the portal to see the update!</p><br><p>Regards,<br>Sparky\'s Soccer League</p>`,
+  };
+
+
+  transporter.sendMail(mailOptions3, function (error, info) {
+    if (error) {
+      console.log(error);
+      res.send("error"); 
+    } else {
+      console.log("Email sent: " + info.response);
+      res.send("Sent Successfully");
+    }
+  });
+});
+
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
