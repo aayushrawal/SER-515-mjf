@@ -38,6 +38,12 @@ const ManageHotel = () => {
 				<div className="managehotelhome-Body">
 					<div className="col-12">
 						<div className="text-center">
+							<div className="Items">
+								<div className="Item">Coach Name</div>
+								<div className="Item">Coach Email</div>
+								<div className="Item">Hotel Name</div>
+								<div className="Item">Submit</div>
+							</div>
 							<div className="HotelItems">
 								{coachData.map((item, index) => {
 									return (

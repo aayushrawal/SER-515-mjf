@@ -167,6 +167,15 @@ const Hotels = (props) => {
               <Container className="pt-lg-7">
                 <Row className="justify-content-center">
                   <Col lg="5">
+                  {isAlert ? (
+            <Alerts
+              color={alertColor}
+              status={alertStatus}
+              message={alertMessage}
+            />
+          ) : (
+            ""
+          )}
                     <Card className="bg-secondary shadow border-0">
                       <CardBody className="px-lg-5 py-lg-5">
                         <div className="text-center text-muted mb-4">
@@ -206,15 +215,6 @@ const Hotels = (props) => {
                         </Form>
                       </CardBody>
                     </Card>
-                    {isAlert ? (
-            <Alerts
-              color={alertColor}
-              status={alertStatus}
-              message={alertMessage}
-            />
-          ) : (
-            ""
-          )}
                   </Col>
                 </Row>
               </Container>
