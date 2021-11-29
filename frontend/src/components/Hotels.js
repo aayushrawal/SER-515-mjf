@@ -136,10 +136,10 @@ const Hotels = (props) => {
 
           <div className="hotel-Body">
             <div className="col-12">
-              <p class="h2" style={{ color: "white" }}>
+              <p class="h2" style={{ color: "white", textAlign:'center' }}>
                 Book Hotels For your Team
               </p>
-              <p class="h5" style={{ color: "white" }}>
+              <p class="h5" style={{ color: "white", textAlign:'center' }}>
                 All the Teams have to book a Hotel from the listed properties
                 only, any team booking outside will not be considered for the
                 acceptance of the tournament.
@@ -159,7 +159,7 @@ const Hotels = (props) => {
               </div>
               <br />
               <br />
-              <p class="h5" style={{ color: "white" }}>
+              <p class="h5" style={{ color: "white", textAlign:'center' }}>
                 Don't have time to book a hotel? No problem we can do that for
                 you. Just submit the form and relax and we will book a Hotel for
                 You.
@@ -167,6 +167,15 @@ const Hotels = (props) => {
               <Container className="pt-lg-7">
                 <Row className="justify-content-center">
                   <Col lg="5">
+                  {isAlert ? (
+            <Alerts
+              color={alertColor}
+              status={alertStatus}
+              message={alertMessage}
+            />
+          ) : (
+            ""
+          )}
                     <Card className="bg-secondary shadow border-0">
                       <CardBody className="px-lg-5 py-lg-5">
                         <div className="text-center text-muted mb-4">
@@ -206,15 +215,6 @@ const Hotels = (props) => {
                         </Form>
                       </CardBody>
                     </Card>
-                    {isAlert ? (
-            <Alerts
-              color={alertColor}
-              status={alertStatus}
-              message={alertMessage}
-            />
-          ) : (
-            ""
-          )}
                   </Col>
                 </Row>
               </Container>
