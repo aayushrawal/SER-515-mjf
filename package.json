@@ -1,0 +1,19 @@
+{
+  "name": "ser515-team21-sparkysleague",
+  "version": "1.0.0",
+  "description": "This is the project repository for SER515 Foundations of Software Engineering. For this subject we were  \r asked to create a website to help manage and conduct a soccer tournament.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aayushrawal/SER515-Team21-SparkysLeague.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aayushrawal/SER515-Team21-SparkysLeague/issues"
+  },
+  "homepage": "https://github.com/aayushrawal/SER515-Team21-SparkysLeague#readme"
+}

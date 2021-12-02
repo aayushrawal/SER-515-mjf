@@ -12,6 +12,6 @@ module.exports = (app) => {
   
   router.put("/assign-referee/:id", referee.update);
 
-  app.use("/api/referee", router);
+  app.use("https://sparkys-league-server.herokuapp.com/api/referee", router);
 };
 

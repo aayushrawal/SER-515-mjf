@@ -4,7 +4,7 @@ import RefereeItem from "./RefereeItem";
 import axios from "axios";
 
 import Table from "react-bootstrap/Table";
-import { Container, Col, Input, Button } from "reactstrap";
+import { Container, Col } from "reactstrap";
 
 const TableHeader = () => (
   <thead>
@@ -22,11 +22,12 @@ const TableHeader = () => (
 );
 
 const ManageReferee = () => {
-  const url = "/api/referee/referee-list";
+  const url = "https://sparkys-league-server.herokuapp.com/api/referee/referee-list";
   var newData = [];
   const [refereeData, setData] = useState(newData);
   useEffect(() => {
     getAllReferee();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getAllReferee = () => {

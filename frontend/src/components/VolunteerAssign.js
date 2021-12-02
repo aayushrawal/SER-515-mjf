@@ -6,8 +6,8 @@ import Alerts from "../components/Alerts";
 
 
 const VolunteerAssign = () => {
-    const geturl = "/api/volunteer/volunteer-list"
-    const posturl = "/api/volunteer/assign-volunteer"
+    const geturl = "https://sparkys-league-server.herokuapp.com/api/volunteer/volunteer-list"
+    const posturl = "https://sparkys-league-server.herokuapp.com/api/volunteer/assign-volunteer"
 
     const [vdata, setVdata] = useState([])
     const [isAlert, setIsAlert] = useState(false);
@@ -61,7 +61,7 @@ const VolunteerAssign = () => {
             }
         )
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     const createObj = {
                         alertColor: "success",
                         alertStatus: "Success!",

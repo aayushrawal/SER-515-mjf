@@ -6,6 +6,6 @@ module.exports = (app) => {
     // Assign Matches to teams 
     router.post("/assign-matches", assignteams.assign);
   
-    app.use("/api/team-applications", router);
+    app.use("https://sparkys-league-server.herokuapp.com/api/team-applications", router);
   };
   

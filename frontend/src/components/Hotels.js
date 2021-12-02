@@ -17,13 +17,9 @@ import {
   Col,
 } from "reactstrap";
 
-const SubmitForm = (e) => {
-  e.preventDefault();
-};
-
 const Hotels = (props) => {
 
-  const url = "/api/hotels/booking";
+  const url = "https://sparkys-league-server.herokuapp.com/api/hotels/booking";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
   const [alertStatus, setAlertStatus] = useState("");
@@ -145,7 +141,7 @@ const Hotels = (props) => {
                 acceptance of the tournament.
               </p>
               <div className="text-center">
-                <a target="_blank" href="https://www.hotels.com/">
+                <a target="_blank" rel="noopener noreferrer" href="https://www.hotels.com/">
                   <Button
                     onclick="('window.location.href)"
                     className="mt-4"

@@ -8,6 +8,6 @@ module.exports = (app) => {
   
     //router.get("/booking", hotelsdirector.findAll);
   
-    app.use("/api/hotels", router);
+    app.use("https://sparkys-league-server.herokuapp.com/api/hotels", router);
   };
   

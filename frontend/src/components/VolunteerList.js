@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const VolunteerList = () => {
-    const url = "/api/volunteer/volunteer-list"
+    const url = "https://sparkys-league-server.herokuapp.com/api/volunteer/volunteer-list"
     const [vdata, setVdata] = useState([])
 
     const getVdata = () =>{

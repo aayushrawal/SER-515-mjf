@@ -12,7 +12,7 @@ const FAQ = () => {
   const [faqData, setData] = useState(newData)
   useEffect(() => {
     getAllFaqs();
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getAllFaqs = () => {

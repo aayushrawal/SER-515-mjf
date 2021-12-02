@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 
 const Registration = () => {
-  const url = "/api/users/registration";
+  const url = "https://sparkys-league-server.herokuapp.com/api/users/registration";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
   const [alertStatus, setAlertStatus] = useState("");

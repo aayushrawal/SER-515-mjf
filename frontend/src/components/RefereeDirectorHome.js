@@ -1,7 +1,7 @@
 import React from "react";
 import "./RefereeDirectorHome.scss";
 
-import { Button, NavbarBrand } from "reactstrap";
+import { Button } from "reactstrap";
 
 import { Link } from "react-router-dom";
 

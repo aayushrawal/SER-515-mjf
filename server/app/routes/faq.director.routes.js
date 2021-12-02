@@ -5,6 +5,6 @@ module.exports = (app) => {
   
     router.post("/faq-director", faq_director.create);
     router.get("/faq-director", faq_director.findAll);
-    app.use("/api/faq", router);
+    app.use("https://sparkys-league-server.herokuapp.com/api/faq", router);
   };
   

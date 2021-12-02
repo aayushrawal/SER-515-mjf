@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 
 const Sponsors = () => {
-  const url = "/api/sponsor/sponsor-list";
+  const url = "https://sparkys-league-server.herokuapp.com/api/sponsor/sponsor-list";
 
   const [sponsorList, setSponsorList] = useState([]);
 

@@ -5,8 +5,8 @@ import axios from 'axios';
 import Alerts from "../components/Alerts";
 
 const TeamApplications = () => {
-    const geturl = "/api/users/team-list"
-    const postacceptrejecturl = "/api/team-applications/accept-reject"
+    const geturl = "https://sparkys-league-server.herokuapp.com/api/users/team-list"
+    const postacceptrejecturl = "https://sparkys-league-server.herokuapp.com/api/team-applications/accept-reject"
     const emailurl = "/sendemail/"
 
     const [isAlert, setIsAlert] = useState(false);
@@ -56,7 +56,7 @@ const TeamApplications = () => {
             }
         )
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     item.teamStatus="accepted";
                     // item.acceptStatus = true
                     // item.rejectStatus = true
@@ -110,7 +110,7 @@ const TeamApplications = () => {
             }
         )
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     item.teamStatus="not accepted";
                     // item.rejectStatus = true
                     const createObj = {

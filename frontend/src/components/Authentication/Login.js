@@ -25,7 +25,7 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmit(true);
-    const rawResponse = await fetch("/api/auth/signin", {
+    const rawResponse = await fetch("https://sparkys-league-server.herokuapp.com/api/auth/signin", {
       method: "POST",
       headers: {
         Accept: "application/json",

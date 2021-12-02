@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 
 const SponsorCreation = () => {
-  const url = "/api/sponsor/add-sponsor";
+  const url = "https://sparkys-league-server.herokuapp.com/api/sponsor/add-sponsor";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
   const [alertStatus, setAlertStatus] = useState("");

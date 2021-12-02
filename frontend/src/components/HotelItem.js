@@ -7,7 +7,7 @@ import Alerts from "../components/Alerts";
 
 const HotelItem = ({ item }) => {
 
-	const url = "/api/hotels/hotel-director";
+	const url = "https://sparkys-league-server.herokuapp.com/api/hotels/hotel-director";
 	const emailurl = "/sendemail3/";
 
 	const [isAlert, setIsAlert] = useState(false);

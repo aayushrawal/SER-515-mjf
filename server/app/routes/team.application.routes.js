@@ -7,6 +7,6 @@ module.exports = (app) => {
     router.post("/accept-reject", teamApplications.acceptreject);
     router.get("/accepted-applications", teamApplications.getaccept);
   
-    app.use("/api/team-applications", router);
+    app.use("https://sparkys-league-server.herokuapp.com/api/team-applications", router);
   };
   

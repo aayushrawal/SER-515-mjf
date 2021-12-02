@@ -21,7 +21,7 @@ import {
 
 const TeamDirectorLogin = (props) => {
   const history = useHistory();
-  const url = "/api/users/login";
+  const url = "https://sparkys-league-server.herokuapp.com/api/users/login";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
   const [alertStatus, setAlertStatus] = useState("");

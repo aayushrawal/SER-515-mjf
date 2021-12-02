@@ -6,7 +6,7 @@ const { user, pass } = require("./config.json");
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://sparkys-league-frontend.herokuapp.com/",
 };
 
 app.use(cors(corsOptions));

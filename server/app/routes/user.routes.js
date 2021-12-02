@@ -8,5 +8,5 @@ module.exports = (app) => {
   router.post("/login", users.findOne);
   router.get("/team-list", users.findAll);
 
-  app.use("/api/users", router);
+  app.use("https://sparkys-league-server.herokuapp.com/api/users", router);
 };

@@ -8,6 +8,6 @@ module.exports = (app) => {
 
     router.post("/assign-volunteer", Volunteers.create);
   
-    app.use("/api/volunteer", router);
+    app.use("https://sparkys-league-server.herokuapp.com/api/volunteer", router);
     
   };

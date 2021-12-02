@@ -41,5 +41,5 @@ module.exports = (app) => {
   // get sponsor list
   router.get("/sponsor-list", sponsor.findAll);
 
-  app.use("/api/sponsor", router);
+  app.use("https://sparkys-league-server.herokuapp.com/api/sponsor", router);
 };

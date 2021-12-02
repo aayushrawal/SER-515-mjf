@@ -8,5 +8,5 @@ module.exports = (app) => {
 
   router.get("/booking", hotels.findAll);
 
-  app.use("/api/hotels", router);
+  app.use("https://sparkys-league-server.herokuapp.com/api/hotels", router);
 };

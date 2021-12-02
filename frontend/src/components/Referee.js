@@ -22,7 +22,7 @@ import {
 } from "reactstrap";
 
 const Referee = () => {
-  const url = "/api/referee/registration";
+  const url = "https://sparkys-league-server.herokuapp.com/api/referee/registration";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
   const [alertStatus, setAlertStatus] = useState("");

@@ -5,8 +5,8 @@ import { Container, Button, Table } from "reactstrap";
 import Alerts from "./Alerts";
 
 const RefereeApplications = () => {
-  const url = "/api/referee/referee-list";
-  const url1 = "/api/referee/update-status";
+  const url = "https://sparkys-league-server.herokuapp.com/api/referee/referee-list";
+  const url1 = "https://sparkys-league-server.herokuapp.com/api/referee/update-status";
   const url2 = "/sendemail/";
   const [isAlert, setIsAlert] = useState(false);
   const [alertColor, setAlertColor] = useState("");
@@ -109,6 +109,7 @@ const RefereeApplications = () => {
         if (ref._id === referee._id) {
           email = referee.refereeEmail;
         }
+        return email;
       });
       axios
       .post(

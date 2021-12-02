@@ -6,8 +6,8 @@ import Alerts from "../components/Alerts";
 
 const ScheduleTeamMatches = () => {
 
-    const geturl = "/api/team-applications/accepted-applications"
-    const posturl = "/api/team-applications/assign-matches"
+    const geturl = "https://sparkys-league-server.herokuapp.com/api/team-applications/accepted-applications"
+    const posturl = "https://sparkys-league-server.herokuapp.com/api/team-applications/assign-matches"
 
     const [acceptteams, setacceptteams] = useState([])
 
@@ -58,9 +58,9 @@ const ScheduleTeamMatches = () => {
             }
         )
             .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
 
-                    if (res.status == 200) {
+                    if (res.status === 200) {
 
                         const createObj = {
                             alertColor: "success",
